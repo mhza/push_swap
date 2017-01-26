@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:39:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2016/11/23 17:00:00 by mhaziza          ###   ########.fr       */
+/*   Updated: 2016/11/28 17:44:02 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_putints(int *tab, int size)
 {
 	int i;
 
-	if (size && tab[0])
+	if (size)
 	{
 		i = -1;
 		while (++i < size)
+		{
 			ft_putnbr(tab[i]);
+			ft_putchar('\n');
+		}
 	}
 }

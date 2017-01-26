@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_get_nb_bytes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 20:03:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/16 01:57:34 by mhaziza          ###   ########.fr       */
+/*   Created: 2017/01/20 11:31:44 by mhaziza           #+#    #+#             */
+/*   Updated: 2017/01/26 10:50:48 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+int			ft_get_nb_bytes(wchar_t *src, int n)
 {
 	unsigned int	i;
+	unsigned int	ibytes;
 
 	i = 0;
-	if (!dest || !src)
-		return (NULL);
-	while (i < n && src[i])
+	ibytes = 0;
+	while (i < (unsigned int)n && src[i])
 	{
-		dest[i] = src[i];
+		if (src[i] <= ft_atoi_base("7F", 16))
+			ibytes += 1;
+		else if (src[i] <= ft_atoi_base("7FF", 16))
+			ibytes += 2;
+		else if (src[i] <= ft_atoi_base("FFFF", 16))
+			ibytes += 3;
+		else if (src[i] <= ft_atoi_base("10FFFF", 16))
+			ibytes += 4;
 		i++;
 	}
-	while (i <= n)
-		dest[i++] = '\0';
-	return (dest);
+	return (ibytes);
 }

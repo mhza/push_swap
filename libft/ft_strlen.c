@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 10:03:00 by mhaziza           #+#    #+#             */
-/*   Updated: 2016/12/06 20:54:01 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/15 20:34:07 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (str)
-		while (str[i])
+		while (str && str[i])
 			i++;
 	return (i);
 }

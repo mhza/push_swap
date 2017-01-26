@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 17:33:14 by mhaziza           #+#    #+#             */
-/*   Updated: 2016/11/23 21:35:38 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/10 09:32:55 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_increment(char c, int base, int nb)
 {
 	nb *= base;
 	if (c >= '0' && c <= '9')
-		nb += c - 48;
+		nb += c - '0';
 	else if (c >= 'a' && c < 'a' + base - 10)
 		nb += c - 'a' + 10;
 	else if (c >= 'A' && c < 'A' + base - 10)

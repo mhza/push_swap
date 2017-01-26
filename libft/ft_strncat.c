@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 20:06:01 by mhaziza           #+#    #+#             */
-/*   Updated: 2016/11/17 20:06:09 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/15 18:46:23 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 
 	i = ft_strlen(dest);
 	j = 0;
-	while (n-- && src[j])
+	while (n-- && src && src[j])
 	{
 		dest[i + j] = src[j];
 		j++;

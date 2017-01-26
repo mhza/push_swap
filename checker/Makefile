@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 15:46:45 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/25 23:29:04 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/01/26 20:03:33 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS	= 	-Wall -Wextra -Werror -I. -g
 RM		=   rm -f
 SRCS	=	main.c \
 			checker.c \
-			chained_list_utils.c \
+			link_utils.c \
 			stdout_utils.c \
+			functor_utils.c \
 
 OBJS	=   $(SRCS:.c=.o)
 

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_wputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 20:03:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/16 01:57:34 by mhaziza          ###   ########.fr       */
+/*   Created: 2016/11/21 18:15:06 by mhaziza           #+#    #+#             */
+/*   Updated: 2017/01/19 19:01:32 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+size_t	ft_wputstr(const wchar_t *s)
 {
-	unsigned int	i;
+	int	i;
+	int	total_length;
 
-	i = 0;
-	if (!dest || !src)
-		return (NULL);
-	while (i < n && src[i])
+	i = -1;
+	total_length = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
+	else
 	{
-		dest[i] = src[i];
-		i++;
+		while (++i < (int)ft_wstrlen(s))
+			total_length += ft_wputchar(s[i]);
+		return (total_length);
 	}
-	while (i <= n)
-		dest[i++] = '\0';
-	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 18:06:02 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/25 23:27:14 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/26 10:23:31 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "printf.h"
 
 typedef struct		s_list
 {
@@ -78,9 +79,9 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long int n);
 void				ft_putchar(char c);
-void				ft_putstr(char const *s);
+size_t				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
@@ -98,10 +99,11 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_putints(int *tab, int size);
 void				ft_puttab_int(int **tab, int size, int size2);
 void				ft_puttab_str(char **tab);
-size_t				ft_intlen_base(unsigned int n, int base);
+size_t				ft_intlen_base(long long n, int base);
+size_t				ft_uintlen_base(unsigned long n, int base);
 void				ft_putnbr_base(int nb, int base);
 int					ft_atoi_base(const char *str, int str_base);
-char				*ft_itoa_base(int value, int base);
+char				*ft_itoa_base(long value, int base);
 char				**ft_realloc(char **tab, char *neww);
 
 #endif

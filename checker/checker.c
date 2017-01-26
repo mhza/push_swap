@@ -6,14 +6,47 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/25 23:30:00 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/26 21:28:40 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 
-void	apply_operand(t_link **pile_a, t_link **pile_b)
+void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 {
+	if (pile_a && (!ft_strcmp(cmd, SA) || !ft_strcmp(cmd, SS)))
+		swap(pile_a);
+	if (pile_b && (!ft_strcmp(cmd, SB) || !ft_strcmp(cmd, SS)))
+		swap(pile_b);
+	if (!ft_strcmp(cmd, PB))
+		push(pile_a, pile_b);
+	if (!ft_strcmp(cmd, PA))
+		push(pile_b, pile_a);
+}
 
+void	ope_read(t_link **pile_a)
+{
+	char	*cmd;
+	int		read;
+	t_link	**pile_b;
+
+	pile_b = ft_memalloc(sizeof(t_link*));
+	*pile_b = NULL;
+	read = get_next_line(0, &cmd);
+	while (read && read != READ_ERROR)
+	{
+		if (cmd)
+			ope_route(pile_a, pile_b, cmd);
+		ft_putstr("A > ");
+		if (pile_a)
+			print_data_next(*pile_a);
+		ft_putstr("B > ");
+		if (pile_b)
+			print_data_next(*pile_b);
+		else
+			ft_putstr("(null)\n");
+		ft_putstr("\n");
+		read = get_next_line(0, &cmd);
+	}
 }

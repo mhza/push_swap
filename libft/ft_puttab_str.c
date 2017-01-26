@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:36:27 by mhaziza           #+#    #+#             */
-/*   Updated: 2016/11/23 16:44:20 by mhaziza          ###   ########.fr       */
+/*   Updated: 2016/11/24 14:12:28 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	ft_puttab_str(char **tab)
 {
-	if (tab && tab[0])
+	int i;
+
+	i = 0;
+	while (tab && tab[i])
 	{
-		ft_putstr(tab[0]);
+		ft_putstr(tab[i]);
 		ft_putstr("\n");
-		ft_puttab_str(tab + 1);
+		i++;
 	}
 }

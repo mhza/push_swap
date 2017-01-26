@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/18 16:29:51 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/25 23:28:24 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/01/26 10:45:22 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS	=   get_next_line.c \
 			ft_isascii.c \
 			ft_isprint.c \
 			ft_toupper.c \
+			ft_toupperstr.c \
 			ft_tolower.c \
 			ft_memalloc.c \
 			ft_memdel.c \
@@ -83,6 +84,26 @@ SRCS	=   get_next_line.c \
 			ft_atoi_base.c \
 			ft_itoa_base.c \
 			ft_realloc.c \
+			ft_wputchar.c \
+			ft_wputstr.c \
+			ft_wstrlen.c \
+			ft_wbyteslen.c \
+			ft_wstrncpy.c \
+			ft_wstrncpyp.c \
+			printf.c \
+			print_params.c  \
+			conv_alpha.c \
+			conv_num.c \
+			conv_num_flags.c \
+			flags_utils.c \
+			ft_uitoa_b.c \
+			ft_ulitoa_b.c \
+			casting.c \
+			casting_type.c \
+			ft_wgetchar.c \
+			conv_walpha.c \
+			ft_get_nb_wchar.c \
+			ft_get_nb_bytes.c \
 
 OBJS	=   $(SRCS:.c=.o)
 
