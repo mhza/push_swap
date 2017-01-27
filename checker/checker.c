@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/26 21:28:40 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 15:16:21 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		push(pile_a, pile_b);
 	if (!ft_strcmp(cmd, PA))
 		push(pile_b, pile_a);
+	if (pile_a && (!ft_strcmp(cmd, RA) || !ft_strcmp(cmd, RR)))
+		rotate(pile_a);
+	if (pile_b && (!ft_strcmp(cmd, RB) || !ft_strcmp(cmd, RR)))
+		rotate(pile_b);
+	if (pile_a && (!ft_strcmp(cmd, RRA) || !ft_strcmp(cmd, RRR)))
+		rrotate(pile_a);
+	if (pile_b && (!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
+		rrotate(pile_b);
 }
 
 void	ope_read(t_link **pile_a)

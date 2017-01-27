@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:41:25 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/26 20:27:17 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 14:33:36 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	ope_read(t_link **pile_a);
 void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd);
 void	swap(t_link **top_pile);
 void	push(t_link **src, t_link **dest);
-
+void	rotate(t_link **top_pile);
+void	rrotate(t_link **bottom_pile);
 #endif

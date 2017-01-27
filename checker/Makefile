@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 15:46:45 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/26 20:03:33 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/01/27 15:16:34 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS	=	main.c \
 			checker.c \
 			link_utils.c \
 			stdout_utils.c \
-			functor_utils.c \
+			ope_utils.c \
 
 OBJS	=   $(SRCS:.c=.o)
 
