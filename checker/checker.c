@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 18:28:22 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 19:50:31 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,39 @@ int		ope_read(t_link **pile_a)
 			ope_route(pile_a, pile_b, cmd);
 		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
 			return (READ_ERROR);
+		else
+			return (READ_ERROR);
 		read = get_next_line(0, &cmd);
 	}
 	return (READ_END);
 }
+
+// int		ope_read(t_link **pile_a)
+// {
+// 	char	*cmd;
+// 	int		read;
+// 	t_link	**pile_b;
+// 	int		fd;
+// 	char	buffer[BUFF_SIZE];
+//
+// 	fd = open("to_check", O_WRONLY | O_CREAT | O_APPEND);
+// 	read = 1;
+// 	while ((read = read(0, buffer, BUFF_SIZE)))
+// 		ft_putstr_fd(buffer, fd);
+// 	pile_b = ft_memalloc(sizeof(t_link*));
+// 	*pile_b = NULL;
+// 	read = get_next_line(fd, &cmd);
+// 	while (read && read != READ_ERROR)
+// 	{
+// 		if (cmd && ft_strcmp(cmd, SA)*ft_strcmp(cmd, SB)*ft_strcmp(cmd, SS)
+// 				*ft_strcmp(cmd, PA)*ft_strcmp(cmd, PB)
+// 				*ft_strcmp(cmd, RRA)*ft_strcmp(cmd, RRB)*ft_strcmp(cmd, RRR)
+// 				*ft_strcmp(cmd, RA)*ft_strcmp(cmd, RB)*ft_strcmp(cmd, RR) == 0)
+// 			ope_route(pile_a, pile_b, cmd);
+// 		else if (!ft_strcmp(cmd, "") && get_next_line(fd, &cmd))
+// 			return (READ_ERROR);
+// 		read = get_next_line(fd, &cmd);
+// 	}
+// 	close(fd);
+// 	return (READ_END);
+// }
