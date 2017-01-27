@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:41:08 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/26 20:04:28 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 18:27:16 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,28 @@ void	to_lastlk(t_link **alk)
 {
 	while ((*alk) && (*alk)->next)
 		(*alk) = (*alk)->next;
+}
+
+int		countlk(t_link *alk)
+{
+	int	i;
+
+	i = 0;
+	while (alk && alk->next)
+	{
+		i++;
+		alk = alk->next;
+	}
+	return (i);
+}
+
+int		is_sortlk(t_link *alk)
+{
+	while (alk && alk->next)
+	{
+		if (alk->data > alk->next->data)
+			return (0);
+		alk = alk->next;
+	}
+	return (1);
 }

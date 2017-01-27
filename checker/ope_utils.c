@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 15:52:12 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 15:50:08 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 18:09:47 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	push(t_link **src, t_link **dest)
 			*dest = *src;
 			*src = (*src)->next;
 			(*dest)->next = NULL;
+			(*src)->prev = NULL;
 		}
 		else if ((*src)->next)
 		{
@@ -66,6 +67,7 @@ void	rotate(t_link **top_pile)
 		}
 		(*top_pile)->data = tmp;
 		to_firstlk(top_pile);
+
 	}
 }
 

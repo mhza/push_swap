@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 16:06:31 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 18:28:22 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		rrotate(pile_a);
 	if (pile_b && (!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
 		rrotate(pile_b);
+// ft_putstr("A > ");
+// if (pile_a)
+// 	print_data_next(*pile_a);
+// ft_putstr("B > ");
+// if (pile_b)
+// 	print_data_next(*pile_b);
+// else
+// 	ft_putstr("(null)\n");
+// ft_putstr("\n");
 }
 
 int		ope_read(t_link **pile_a)
@@ -46,24 +55,12 @@ int		ope_read(t_link **pile_a)
 	{
 		if (cmd && ft_strcmp(cmd, SA)*ft_strcmp(cmd, SB)*ft_strcmp(cmd, SS)
 				*ft_strcmp(cmd, PA)*ft_strcmp(cmd, PB)
-				*ft_strcmp(cmd, RA)*ft_strcmp(cmd, RB)*ft_strcmp(cmd, RR)
-				*ft_strcmp(cmd, RRA)*ft_strcmp(cmd, RRB)*ft_strcmp(cmd, RRR) == 0)
+				*ft_strcmp(cmd, RRA)*ft_strcmp(cmd, RRB)*ft_strcmp(cmd, RRR)
+				*ft_strcmp(cmd, RA)*ft_strcmp(cmd, RB)*ft_strcmp(cmd, RR) == 0)
 			ope_route(pile_a, pile_b, cmd);
-		else
-		{
-			ft_putstr("Error");
+		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
 			return (READ_ERROR);
-		}
-		ft_putstr("A > ");
-		if (pile_a)
-			print_data_next(*pile_a);
-		ft_putstr("B > ");
-		if (pile_b)
-			print_data_next(*pile_b);
-		else
-			ft_putstr("(null)\n");
-		ft_putstr("\n");
 		read = get_next_line(0, &cmd);
 	}
-	return (READ_ERROR);
+	return (READ_END);
 }
