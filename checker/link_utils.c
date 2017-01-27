@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:41:08 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 18:27:16 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 20:21:15 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_link	*lknew(int data)
 {
 	t_link	*new;
+
 	if ((new = ft_memalloc(sizeof(t_link))) == NULL)
 		return (NULL);
 	new->data = data;
@@ -52,15 +53,4 @@ int		countlk(t_link *alk)
 		alk = alk->next;
 	}
 	return (i);
-}
-
-int		is_sortlk(t_link *alk)
-{
-	while (alk && alk->next)
-	{
-		if (alk->data > alk->next->data)
-			return (0);
-		alk = alk->next;
-	}
-	return (1);
 }

@@ -6,19 +6,30 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 18:27:55 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 20:19:35 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+int		is_sortlk(t_link *alk)
+{
+	while (alk && alk->next)
+	{
+		if (alk->data > alk->next->data)
+			return (0);
+		alk = alk->next;
+	}
+	return (1);
+}
 
 t_link	*set_pile(char *str)
 {
-	int		i = 0;
+	int		i;
 	t_link	*new;
 	t_link	*pile;
 
+	i = 0;
 	while (str && str[i] && str[i] == ' ')
 		i++;
 	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
@@ -28,7 +39,7 @@ t_link	*set_pile(char *str)
 	while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 		i++;
 	while (str && str[i])
-	 {
+	{
 		while (str && str[i] && str[i] == ' ')
 			i++;
 		if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
@@ -45,7 +56,7 @@ t_link	*set_pile(char *str)
 	return (pile);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	int		i;
 	int		count;

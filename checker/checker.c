@@ -6,12 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 19:50:31 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 20:18:08 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
 
 void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 {
@@ -53,14 +52,14 @@ int		ope_read(t_link **pile_a)
 	read = get_next_line(0, &cmd);
 	while (read && read != READ_ERROR)
 	{
-		if (cmd && ft_strcmp(cmd, SA)*ft_strcmp(cmd, SB)*ft_strcmp(cmd, SS)
-				*ft_strcmp(cmd, PA)*ft_strcmp(cmd, PB)
-				*ft_strcmp(cmd, RRA)*ft_strcmp(cmd, RRB)*ft_strcmp(cmd, RRR)
-				*ft_strcmp(cmd, RA)*ft_strcmp(cmd, RB)*ft_strcmp(cmd, RR) == 0)
+		if (cmd && ft_strcmp(cmd, SA) * ft_strcmp(cmd, SB) * ft_strcmp(cmd, SS)
+			* ft_strcmp(cmd, PA) * ft_strcmp(cmd, PB)
+			* ft_strcmp(cmd, RRA) * ft_strcmp(cmd, RRB) * ft_strcmp(cmd, RRR)
+			* ft_strcmp(cmd, RA) * ft_strcmp(cmd, RB) * ft_strcmp(cmd, RR) == 0)
 			ope_route(pile_a, pile_b, cmd);
 		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
 			return (READ_ERROR);
-		else
+		else if (ft_strcmp(cmd, ""))
 			return (READ_ERROR);
 		read = get_next_line(0, &cmd);
 	}
