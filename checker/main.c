@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/26 20:27:22 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 16:09:49 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,11 @@ int main(int ac, char **av)
 	int		i;
 	t_link	*pile;
 	t_link	*hash_pile;
-	t_link	*first;
-	t_link	*last;
 
 	if (ac == 1 || !av[1])
 		return (0);
 	if ((pile = set_pile(av[1])) == NULL)
 		return (-1);
-	first = pile;
-	to_firstlk(&first);
 	i = 1;
 	while (++i < ac && av[i])
 	{
@@ -65,9 +61,10 @@ int main(int ac, char **av)
 		hash_pile->prev = pile;
 		to_lastlk(&pile);
 	}
-	last = pile;
-	print_data_next(first);
+	to_firstlk(&pile);
+	print_data_next(pile);
 	ft_putstr("==============\n");
-	ope_read(&first);
+	ope_read(&pile);
+
 	return (1);
 }

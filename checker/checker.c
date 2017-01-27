@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 15:16:21 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/27 16:06:31 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		rrotate(pile_b);
 }
 
-void	ope_read(t_link **pile_a)
+int		ope_read(t_link **pile_a)
 {
 	char	*cmd;
 	int		read;
@@ -44,8 +44,16 @@ void	ope_read(t_link **pile_a)
 	read = get_next_line(0, &cmd);
 	while (read && read != READ_ERROR)
 	{
-		if (cmd)
+		if (cmd && ft_strcmp(cmd, SA)*ft_strcmp(cmd, SB)*ft_strcmp(cmd, SS)
+				*ft_strcmp(cmd, PA)*ft_strcmp(cmd, PB)
+				*ft_strcmp(cmd, RA)*ft_strcmp(cmd, RB)*ft_strcmp(cmd, RR)
+				*ft_strcmp(cmd, RRA)*ft_strcmp(cmd, RRB)*ft_strcmp(cmd, RRR) == 0)
 			ope_route(pile_a, pile_b, cmd);
+		else
+		{
+			ft_putstr("Error");
+			return (READ_ERROR);
+		}
 		ft_putstr("A > ");
 		if (pile_a)
 			print_data_next(*pile_a);
@@ -57,4 +65,5 @@ void	ope_read(t_link **pile_a)
 		ft_putstr("\n");
 		read = get_next_line(0, &cmd);
 	}
+	return (READ_ERROR);
 }
