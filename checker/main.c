@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 18:19:38 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 18:44:21 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int		ret_main(t_link **pile, char *str, int ret, int print)
 {
-	ft_putstr(str);
+	if (!ft_strcmp(str, "OK\n"))
+		ft_putstr(str);
+	else
+		write(2, str, ft_strlen(str));
 	if (print)
 	{
 		to_firstlk(pile);
