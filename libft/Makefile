@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/18 16:29:51 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/26 10:45:22 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/01/28 19:52:25 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS	=   get_next_line.c \
 			ft_strcmp.c \
 			ft_strncmp.c \
 			ft_atoi.c \
+			ft_atoli.c \
 			ft_isalpha.c \
 			ft_isdigit.c \
 			ft_isalnum.c \

@@ -6,11 +6,31 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 18:44:21 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 19:56:29 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+
+// int		check_intmax(char *str)
+// {
+// 	int	i;
+// 	int	nb;
+//
+// 	// i = 0;
+// 	// while (str[i] && ft_isdigit(str[i]) && str[i] == '0')
+// 	// 	i++;
+// 	// str = str + i;
+// 	i = 0;
+// 	while (str[i] && ft_isdigit(str[i]))
+// 		i++;
+// 	if (i > ft_strlen("2147483647"))
+// 		return (0);
+// 	if (i < ft_strlen("2147483647"))
+// 		return (1);
+//
+// }
 
 int		ret_main(t_link **pile, char *str, int ret, int print)
 {
@@ -34,10 +54,17 @@ char	*set_pile_init(char *str, t_link **pile)
 	i = 0;
 	while (str && str[i] && str[i] == ' ')
 		i++;
-	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
+	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 		return (NULL);
-	if ((*pile = lknew(ft_atoi(str + i))) == NULL)
-		return (NULL);
+	if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
+	{
+		if (ft_atoli(str + i) < -2147483648 || ft_atoli(str + i) > 2147483647)
+			return (NULL);
+		if ((*pile = lknew(ft_atoli(str + i))) == NULL)
+			return (NULL);
+		if (ft_atoli(str + i) < 0)
+			i += 1;
+	}
 	while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 		i++;
 	return (str + i);
@@ -54,19 +81,23 @@ t_link	*set_pile(char *str)
 	i = 0;
 	while (str && str[i])
 	{
-		while (str && str[i] && str[i] == ' ')
+		while (str[i] && str[i] == ' ')
 			i++;
-		if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
+		if (str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 			return (NULL);
-		if (str[i] && ft_isdigit(str[i]))
+		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 		{
-			new = lknew(ft_atoi(str + i));
+			if (ft_atoli(str + i) < -2147483648 || ft_atoli(str + i) > 2147483647)
+				return (NULL);
+			new = lknew(ft_atoli(str + i));
+			if (ft_atoli(str + i) < 0)
+				i += 1;
 			if (!is_twice(pile, new->data))
 				return (NULL);
 			lkadd(&pile, new);
 			new->prev->next = new;
 		}
-		while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
+		while (str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 			i++;
 	}
 	return (pile);
