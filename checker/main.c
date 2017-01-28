@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 20:19:35 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 15:36:19 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		main(int ac, char **av)
 		return (0);
 	if ((pile = set_pile(av[1])) == NULL)
 	{
+		free_link(&pile);
 		ft_putstr("Error\n");
 		return (-1);
 	}
@@ -75,6 +76,8 @@ int		main(int ac, char **av)
 	{
 		if ((hash_pile = set_pile(av[i])) == NULL)
 		{
+			free_link(&pile);
+			free_link(&hash_pile);
 			ft_putstr("Error\n");
 			return (-1);
 		}
@@ -89,6 +92,7 @@ int		main(int ac, char **av)
 	ft_putstr("==============\n");
 	if (ope_read(&pile) == READ_ERROR)
 	{
+		free_link(&pile);
 		ft_putstr("Error\n");
 		return (-1);
 	}
@@ -97,5 +101,6 @@ int		main(int ac, char **av)
 	else
 		ft_putstr("OK\n");
 	print_data_next(pile);
+	free_link(&pile);
 	return (1);
 }

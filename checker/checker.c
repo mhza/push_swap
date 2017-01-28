@@ -6,11 +6,24 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/27 20:18:08 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 15:37:15 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	free_link(t_link **pile)
+{
+	if (pile)
+	{
+		while (*pile && (*pile)->next)
+		{
+			*pile = (*pile)->next;
+			free((*pile)->prev);
+		}
+		free(*pile);
+	}
+}
 
 void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 {
@@ -30,6 +43,7 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		rrotate(pile_a);
 	if (pile_b && (!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
 		rrotate(pile_b);
+	free(cmd);
 // ft_putstr("A > ");
 // if (pile_a)
 // 	print_data_next(*pile_a);
@@ -58,11 +72,20 @@ int		ope_read(t_link **pile_a)
 			* ft_strcmp(cmd, RA) * ft_strcmp(cmd, RB) * ft_strcmp(cmd, RR) == 0)
 			ope_route(pile_a, pile_b, cmd);
 		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
+		{
+			free(cmd);
+			free_link(pile_b);
 			return (READ_ERROR);
+		}
 		else if (ft_strcmp(cmd, ""))
+		{
+			free(cmd);
+			free_link(pile_b);
 			return (READ_ERROR);
+		}
 		read = get_next_line(0, &cmd);
 	}
+
 	return (READ_END);
 }
 
