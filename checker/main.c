@@ -6,31 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 19:56:29 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 20:02:24 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-
-// int		check_intmax(char *str)
-// {
-// 	int	i;
-// 	int	nb;
-//
-// 	// i = 0;
-// 	// while (str[i] && ft_isdigit(str[i]) && str[i] == '0')
-// 	// 	i++;
-// 	// str = str + i;
-// 	i = 0;
-// 	while (str[i] && ft_isdigit(str[i]))
-// 		i++;
-// 	if (i > ft_strlen("2147483647"))
-// 		return (0);
-// 	if (i < ft_strlen("2147483647"))
-// 		return (1);
-//
-// }
 
 int		ret_main(t_link **pile, char *str, int ret, int print)
 {
@@ -87,7 +67,8 @@ t_link	*set_pile(char *str)
 			return (NULL);
 		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 		{
-			if (ft_atoli(str + i) < -2147483648 || ft_atoli(str + i) > 2147483647)
+			if (ft_atoli(str + i) < -2147483648 ||
+			ft_atoli(str + i) > 2147483647)
 				return (NULL);
 			new = lknew(ft_atoli(str + i));
 			if (ft_atoli(str + i) < 0)
