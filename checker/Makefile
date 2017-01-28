@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 15:46:45 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/27 18:24:05 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/01/28 16:51:51 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ RM		=   rm -f
 SRCS	=	main.c \
 			checker.c \
 			link_utils.c \
+			link_utils2.c \
 			stdout_utils.c \
 			ope_utils.c \
 

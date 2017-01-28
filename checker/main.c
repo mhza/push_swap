@@ -6,38 +6,33 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 16:14:33 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 17:59:57 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		is_doublon(t_link *hash_pile, t_link *pile)
+int		ret_main(t_link **pile, char *str, int ret)
 {
-	while (hash_pile)
-	{
-		to_firstlk(&pile);
-		while (pile)
-		{
-			if (hash_pile->data == pile->data)
-				return (0);
-			pile = pile->next;
-		}
-		to_firstlk(&pile);
-		hash_pile = hash_pile->next;
-	}
-	return (1);
+	free_link(pile);
+	ft_putstr(str);
+	return (ret);
 }
 
-int		is_sortlk(t_link *alk)
+char	*set_pile_init(char *str, t_link **pile)
 {
-	while (alk && alk->next)
-	{
-		if (alk->data > alk->next->data)
-			return (0);
-		alk = alk->next;
-	}
-	return (1);
+	int	i;
+
+	i = 0;
+	while (str && str[i] && str[i] == ' ')
+		i++;
+	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
+		return (NULL);
+	if ((*pile = lknew(ft_atoi(str + i))) == NULL)
+		return (NULL);
+	while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
+		i++;
+	return (str + i);
 }
 
 t_link	*set_pile(char *str)
@@ -46,15 +41,9 @@ t_link	*set_pile(char *str)
 	t_link	*new;
 	t_link	*pile;
 
+	if ((str = set_pile_init(str, &pile)) == NULL)
+		return (NULL);
 	i = 0;
-	while (str && str[i] && str[i] == ' ')
-		i++;
-	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ')
-		return (NULL);
-	if ((pile = lknew(ft_atoi(str + i))) == NULL)
-		return (NULL);
-	while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
-		i++;
 	while (str && str[i])
 	{
 		while (str && str[i] && str[i] == ' ')
@@ -64,6 +53,8 @@ t_link	*set_pile(char *str)
 		if (str[i] && ft_isdigit(str[i]))
 		{
 			new = lknew(ft_atoi(str + i));
+			if (!is_twice(pile, new->data))
+				return (NULL);
 			lkadd(&pile, new);
 			new->prev->next = new;
 		}
@@ -73,51 +64,42 @@ t_link	*set_pile(char *str)
 	return (pile);
 }
 
-int		main(int ac, char **av)
+int		init_pile(t_link **pile, int ac, char **av)
 {
 	int		i;
-	int		count;
-	t_link	*pile;
 	t_link	*hash_pile;
 
-	if (ac == 1 || !av[1])
+	if ((*pile = set_pile(av[1])) == NULL)
 		return (0);
-	if ((pile = set_pile(av[1])) == NULL)
-	{
-		free_link(&pile);
-		ft_putstr("Error\n");
-		return (-1);
-	}
 	i = 1;
 	while (++i < ac && av[i])
 	{
-		if ((hash_pile = set_pile(av[i])) == NULL || !is_doublon(hash_pile, pile))
-		{
-			free_link(&pile);
-			free_link(&hash_pile);
-			ft_putstr("Error\n");
-			return (-1);
-		}
+		if ((hash_pile = set_pile(av[i])) == NULL ||
+		!is_twice_global(hash_pile, *pile))
+			return (0);
 		to_firstlk(&hash_pile);
-		pile->next = hash_pile;
-		hash_pile->prev = pile;
-		to_lastlk(&pile);
+		(*pile)->next = hash_pile;
+		hash_pile->prev = *pile;
+		to_lastlk(pile);
 	}
-	to_firstlk(&pile);
-	count = countlk(pile);
-	print_data_next(pile);
-	ft_putstr("==============\n");
-	if (ope_read(&pile) == READ_ERROR)
-	{
-		free_link(&pile);
-		ft_putstr("Error\n");
-		return (-1);
-	}
-	if (count != countlk(pile) || !is_sortlk(pile))
-		ft_putstr("KO\n");
-	else
-		ft_putstr("OK\n");
-	print_data_next(pile);
-	free_link(&pile);
+	to_firstlk(pile);
 	return (1);
+}
+
+int		main(int ac, char **av)
+{
+	int		count;
+	t_link	*pile;
+
+	if (ac == 1 || !av[1] || (av[1] && !ft_strcmp(av[1], "")))
+		return (0);
+	if (!init_pile(&pile, ac, av))
+		return (ret_main(&pile, "Error\n", 0));
+	count = countlk(pile);
+	if (ope_read(&pile) == READ_ERROR)
+		return (ret_main(&pile, "Error\n", 0));
+	if (count != countlk(pile) || !is_sortlk(pile))
+		return (ret_main(&pile, "KO\n", 0));
+	else
+		return (ret_main(&pile, "OK\n", 1));
 }

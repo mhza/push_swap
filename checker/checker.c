@@ -6,25 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 16:14:50 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 16:50:15 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void	free_link(t_link **pile)
-{
-	if (pile)
-	{
-		while (*pile && (*pile)->next)
-		{
-			*pile = (*pile)->next;
-			free((*pile)->prev);
-		}
-		if (*pile)
-			free(*pile);
-	}
-}
 
 void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 {
@@ -46,14 +32,6 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		rrotate(pile_b);
 	if (cmd)
 		free(cmd);
-}
-
-int		ret_err_free(t_link **pile_b, char *cmd)
-{
-	if (cmd)
-		free(cmd);
-	free_link(pile_b);
-	return (READ_ERROR);
 }
 
 int		ope_read(t_link **pile_a)

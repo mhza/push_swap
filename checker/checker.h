@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:41:25 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 14:43:39 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 17:36:21 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ t_link			*lknew(int data);
 void			lkadd(t_link **alk, t_link *new);
 void			to_firstlk(t_link **alk);
 void			to_lastlk(t_link **alk);
+
 int				countlk(t_link *alk);
+int				is_twice(t_link *pile, int data);
+int				is_twice_global(t_link *hash_pile, t_link *pile);
 int				is_sortlk(t_link *alk);
 void			free_link(t_link **pile);
+int				ret_err_free(t_link **pile_b, char *cmd);
+
 int				ope_read(t_link **pile_a);
 void			ope_route(t_link **pile_a, t_link **pile_b, char *cmd);
+
 void			swap(t_link **top_pile);
 void			push(t_link **src, t_link **dest);
 void			rotate(t_link **top_pile);
 void			rrotate(t_link **bottom_pile);
+
 #endif
