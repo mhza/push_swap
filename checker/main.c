@@ -6,11 +6,28 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 15:36:19 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 16:14:33 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int		is_doublon(t_link *hash_pile, t_link *pile)
+{
+	while (hash_pile)
+	{
+		to_firstlk(&pile);
+		while (pile)
+		{
+			if (hash_pile->data == pile->data)
+				return (0);
+			pile = pile->next;
+		}
+		to_firstlk(&pile);
+		hash_pile = hash_pile->next;
+	}
+	return (1);
+}
 
 int		is_sortlk(t_link *alk)
 {
@@ -74,7 +91,7 @@ int		main(int ac, char **av)
 	i = 1;
 	while (++i < ac && av[i])
 	{
-		if ((hash_pile = set_pile(av[i])) == NULL)
+		if ((hash_pile = set_pile(av[i])) == NULL || !is_doublon(hash_pile, pile))
 		{
 			free_link(&pile);
 			free_link(&hash_pile);
