@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 16:50:15 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/28 18:18:41 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		free(cmd);
 }
 
-int		ope_read(t_link **pile_a)
+int		ope_read(t_link **pile_a, int option)
 {
 	char	*cmd;
 	int		read;
@@ -49,7 +49,11 @@ int		ope_read(t_link **pile_a)
 			* ft_strcmp(cmd, PA) * ft_strcmp(cmd, PB)
 			* ft_strcmp(cmd, RRA) * ft_strcmp(cmd, RRB) * ft_strcmp(cmd, RRR)
 			* ft_strcmp(cmd, RA) * ft_strcmp(cmd, RB) * ft_strcmp(cmd, RR) == 0)
+		{
 			ope_route(pile_a, pile_b, cmd);
+			if (option)
+				print_both(pile_a, pile_b);
+		}
 		else if (ft_strcmp(cmd, ""))
 			return (ret_err_free(pile_b, cmd));
 		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
