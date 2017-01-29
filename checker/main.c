@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/29 18:33:03 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/29 21:10:06 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int		main(int ac, char **av)
 		return (0);
 	option_print = 0;
 	option_pprint = 0;
-	if (!ft_strcmp(av[1], "-p") || !ft_strcmp(av[1], "-pp"))
+	if (!ft_strcmp(av[1], "-p") || !ft_strcmp(av[1], "-v"))
 		option_print = 1;
-	if (!ft_strcmp(av[1], "-pp"))
+	if (!ft_strcmp(av[1], "-v"))
 		option_pprint = 1;
 	if (!init_pile(&pile, ac, av, option_print))
 		return (ret_main(&pile, "Error\n", 0, 0));
