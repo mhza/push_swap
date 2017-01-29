@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 23:19:20 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 18:20:15 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/29 18:24:52 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,19 @@ void	print_both(t_link **pile_a, t_link **pile_b)
 	else
 		ft_putstr("(null)\n");
 	ft_putstr("\n");
+}
+
+int		ret_main(t_link **pile, char *str, int ret, int print)
+{
+	if (!ft_strcmp(str, "OK\n"))
+		ft_putstr(str);
+	else
+		write(2, str, ft_strlen(str));
+	if (print)
+	{
+		to_firstlk(pile);
+		print_data_next(*pile);
+	}
+	free_link(pile);
+	return (ret);
 }

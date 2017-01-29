@@ -6,26 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 20:02:24 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/29 18:33:03 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-int		ret_main(t_link **pile, char *str, int ret, int print)
-{
-	if (!ft_strcmp(str, "OK\n"))
-		ft_putstr(str);
-	else
-		write(2, str, ft_strlen(str));
-	if (print)
-	{
-		to_firstlk(pile);
-		print_data_next(*pile);
-	}
-	free_link(pile);
-	return (ret);
-}
 
 char	*set_pile_init(char *str, t_link **pile)
 {
@@ -36,24 +21,40 @@ char	*set_pile_init(char *str, t_link **pile)
 		i++;
 	if (str && str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 		return (NULL);
-	if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
+	if (str && str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 	{
-		if (ft_atoli(str + i) < -2147483648 || ft_atoli(str + i) > 2147483647)
+		if (ft_atoli(str + i) < MININT || ft_atoli(str + i) > MAXINT)
 			return (NULL);
 		if ((*pile = lknew(ft_atoli(str + i))) == NULL)
 			return (NULL);
-		if (ft_atoli(str + i) < 0)
-			i += 1;
+		i = ft_atoli(str + i) < 0 ? i + 1 : i;
 	}
 	while (str && str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 		i++;
 	return (str + i);
 }
 
+int		hooklk(t_link **pile, char *str, int i)
+{
+	t_link	*new;
+
+	if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
+	{
+		if (ft_atoli(str + i) < MININT || ft_atoli(str + i) > MAXINT)
+			return (-1);
+		new = lknew(ft_atoli(str + i));
+		i = ft_atoli(str + i) < 0 ? i + 1 : i;
+		if (!is_twice(*pile, new->data))
+			return (-1);
+		lkadd(pile, new);
+		new->prev->next = new;
+	}
+	return (i);
+}
+
 t_link	*set_pile(char *str)
 {
 	int		i;
-	t_link	*new;
 	t_link	*pile;
 
 	if ((str = set_pile_init(str, &pile)) == NULL)
@@ -66,18 +67,7 @@ t_link	*set_pile(char *str)
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 			return (NULL);
 		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
-		{
-			if (ft_atoli(str + i) < -2147483648 ||
-			ft_atoli(str + i) > 2147483647)
-				return (NULL);
-			new = lknew(ft_atoli(str + i));
-			if (ft_atoli(str + i) < 0)
-				i += 1;
-			if (!is_twice(pile, new->data))
-				return (NULL);
-			lkadd(&pile, new);
-			new->prev->next = new;
-		}
+			hooklk(&pile, str, i);
 		while (str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 			i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:41:25 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/28 18:20:09 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/29 18:26:19 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+# define MININT -2147483648
+# define MAXINT 2147483647
 
 typedef struct	s_link
 {
@@ -38,6 +40,7 @@ t_link			*set_pile(char *str);
 void			print_data_prev(t_link *begin_pile);
 void			print_data_next(t_link *begin_pile);
 void			print_both(t_link **pile_a, t_link **pile_b);
+int				ret_main(t_link **pile, char *str, int ret, int print);
 
 t_link			*lknew(int data);
 void			lkadd(t_link **alk, t_link *new);
