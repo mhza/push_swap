@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/01/29 21:10:06 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/01/30 17:21:05 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*set_pile_init(char *str, t_link **pile)
 		return (NULL);
 	if (str && str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 	{
-		if (ft_atoli(str + i) < MININT || ft_atoli(str + i) > MAXINT)
+		if ((str[i] == '-' && str[i + 1] && !ft_isdigit(str[i + 1])) ||
+		ft_atoli(str + i) < MININT || ft_atoli(str + i) > MAXINT)
 			return (NULL);
 		if ((*pile = lknew(ft_atoli(str + i))) == NULL)
 			return (NULL);
@@ -67,7 +68,12 @@ t_link	*set_pile(char *str)
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
 			return (NULL);
 		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
-			hooklk(&pile, str, i);
+		{
+			if ((str[i] == '-' && str[i + 1] && !ft_isdigit(str[i + 1])))
+				return (NULL);
+			else
+				hooklk(&pile, str, i);
+		}
 		while (str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 			i++;
 	}
@@ -84,6 +90,8 @@ int		init_pile(t_link **pile, int ac, char **av, int option)
 		return (0);
 	while (++i < ac && av[i])
 	{
+		if (ft_strlen(av[i]) == 1 && !ft_isdigit(av[i][0]))
+			return (0);
 		if ((hash_pile = set_pile(av[i])) == NULL ||
 		!is_twice_global(hash_pile, *pile))
 			return (0);
