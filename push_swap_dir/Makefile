@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/02 16:25:44 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/02 18:06:57 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,11 @@ $(NAME):$(OBJS)
 
 clean:
 	@rm -f $(OBJS)
+	@make -C $(LIBFT_PATH) clean
 
 fclean:	clean
 	@rm -f $(NAME)
+	@make -C $(LIBFT_PATH) fclean
 
 re:		fclean all
 

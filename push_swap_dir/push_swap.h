@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 17:37:16 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/02 17:55:05 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int				ret_err_free(t_link **pile_b, char *cmd);
 void			cursor_by_data(t_link **alk, int data);
 void			cursor_by_index(t_link **alk, int index);
 int				get_minlk(int is_pila, t_pset *pset);
+int				get_max(int is_pila, t_pset *pset);
 int				index_first_inversion(t_link *alk);
 int				get_index(int is_pila, int data, t_pset *pset);
 int				get_data(int is_pila, int index, t_pset *pset);

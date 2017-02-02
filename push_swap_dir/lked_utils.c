@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 19:24:15 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 17:38:21 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/02 17:55:38 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void  cursor_by_data(t_link **alk, int data)
 		*alk = (*alk)->next;
 }
 
-void  cursor_by_index(t_link **alk, int index)
+void	cursor_by_index(t_link **alk, int index)
 {
 	while (alk && *alk && index > 1)
 	{
@@ -27,7 +27,7 @@ void  cursor_by_index(t_link **alk, int index)
 	}
 }
 
-int  get_minlk(int is_pila, t_pset *pset)
+int		get_minlk(int is_pila, t_pset *pset)
 {
 	int min;
 	t_link	*alk;
@@ -45,6 +45,26 @@ int  get_minlk(int is_pila, t_pset *pset)
 	if (alk && alk->data < min)
 		min = alk->data;
 	return (min);
+}
+
+int		get_max(int is_pila, t_pset *pset)
+{
+	int max;
+	t_link	*alk;
+
+	alk = is_pila ? pset->pila : pset->pilb;
+	max = 0;
+	if (alk)
+		max = alk->data;
+	while (alk && alk->next)
+	{
+		if (alk->data > max)
+			max = alk->data;
+		alk = alk->next;
+	}
+	if (alk && alk->data > max)
+		max = alk->data;
+	return (max);
 }
 
 int		get_index(int is_pila, int data, t_pset *pset)
