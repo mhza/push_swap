@@ -1,0 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ope_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/26 15:52:12 by mhaziza           #+#    #+#             */
+/*   Updated: 2017/02/02 14:40:31 by mhaziza          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	swap(t_link **top_pile)
+{
+	int	tmp;
+
+	if ((*top_pile) && (*top_pile)->next)
+	{
+		tmp = (*top_pile)->data;
+		(*top_pile)->data = (*top_pile)->next->data;
+		(*top_pile)->next->data = tmp;
+	}
+}
+
+void	push(t_link **src, t_link **dest)
+{
+	if ((*src))
+	{
+		if (!(*dest))
+		{
+			*dest = *src;
+			*src = (*src)->next;
+			(*dest)->next = NULL;
+			(*src)->prev = NULL;
+		}
+		else if ((*src)->next)
+		{
+			(*dest)->prev = *src;
+			(*src) = (*src)->next;
+			(*dest)->prev->next = *dest;
+			*dest = (*dest)->prev;
+			(*src)->prev = NULL;
+		}
+		else
+		{
+			(*dest)->prev = *src;
+			(*src)->next = *dest;
+			*dest = (*dest)->prev;
+			*src = NULL;
+		}
+	}
+}
+
+void	rotate(t_link **top_pile)
+{
+	int	tmp;
+
+	if (*top_pile && (*top_pile)->next)
+	{
+		tmp = (*top_pile)->data;
+		while ((*top_pile)->next)
+		{
+			(*top_pile)->data = (*top_pile)->next->data;
+			(*top_pile) = (*top_pile)->next;
+		}
+		(*top_pile)->data = tmp;
+		to_firstlk(top_pile);
+	}
+}
+
+void	rrotate(t_link **bottom_pile)
+{
+	int	tmp;
+
+	if (*bottom_pile && (*bottom_pile)->next)
+	{
+		to_lastlk(bottom_pile);
+		tmp = (*bottom_pile)->data;
+		while ((*bottom_pile) && (*bottom_pile)->prev)
+		{
+			(*bottom_pile)->data = (*bottom_pile)->prev->data;
+			(*bottom_pile) = (*bottom_pile)->prev;
+		}
+		(*bottom_pile)->data = tmp;
+		to_firstlk(bottom_pile);
+	}
+}
+
+void	ope_route(t_pset *pset, char *cmd)
+{
+	if ((!ft_strcmp(cmd, SA) || !ft_strcmp(cmd, SS)))
+		swap(&(pset->pila));
+	if ((!ft_strcmp(cmd, SB) || !ft_strcmp(cmd, SS)))
+		swap(&(pset->pilb));
+	if (!ft_strcmp(cmd, PB))
+		push(&(pset->pila), &(pset->pilb));
+	if (!ft_strcmp(cmd, PA))
+		push(&(pset->pilb), &(pset->pila));
+	if ((!ft_strcmp(cmd, RA) || !ft_strcmp(cmd, RR)))
+		rotate(&(pset->pila));
+	if ((!ft_strcmp(cmd, RB) || !ft_strcmp(cmd, RR)))
+		rotate(&(pset->pilb));
+	if ((!ft_strcmp(cmd, RRA) || !ft_strcmp(cmd, RRR)))
+		rrotate(&(pset->pila));
+	if ((!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
+		rrotate(&(pset->pilb));
+}
