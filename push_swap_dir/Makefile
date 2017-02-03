@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/03 16:18:42 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/03 19:50:07 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRCS	=	main.c \
 			ope_getstr.c \
 			algo_small_set.c \
 			algo_utils.c \
+			quick.c \
+			quick_utils.c \
 
 
 OBJS	=   $(SRCS:.c=.o)

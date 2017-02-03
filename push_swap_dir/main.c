@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:12:54 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/03 20:19:58 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,30 @@ int		main(int ac, char **av)
 		return (ret_main(&(pset.pila), "Error\n", 0, 0));
 	pset.siza = countlk((pset.pila));
 	pset.sizb = -1;
+	pset.minb = 0;
+	pset.maxb = 0;
+	pset.mina = get_min(1, &pset);
+	pset.maxa = get_max(1, &pset);
+// print_data_next((pset.pila));
+// add_one_ope(PB, &pset);
+// add_one_ope(RA, &pset);
+
+printf("midd val %i COUNT %i\n AVANT \n", find_midd(1, &pset), get_max_six_times_two(1, &pset) / 2);
+print_data_next((pset.pila));
+print_data_next((pset.pilb));
+split_pile(1, &pset);
+split_pile(0, &pset);
+ft_putstr("APRES \n");
+print_data_next((pset.pila));
+print_data_next((pset.pilb));
 	// printf("adresse pset.opes DEBUT  %p : \n", pset.opes);
 	// printf("adresse pset.pila DEBUT  %p : \n", pset.pila);
 	// printf("adresse pset.pilb DEBUT  %p : \n", pset.pilb);
 
-	tests(&pset);
+	//tests(&pset);
 	free_link(&(pset.pila));
 	free_link(&(pset.pilb));
-	ft_putstr(pset.opes);
+	//ft_putstr(pset.opes);
 	free(pset.opes);
 	// int i = 1;
 	// while (i == 1)

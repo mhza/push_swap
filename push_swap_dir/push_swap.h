@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:21:43 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/03 19:16:29 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 typedef struct	s_link
 {
 	int				data;
+	int				pack;
 	struct s_link	*next;
 	struct s_link	*prev;
 }				t_link;
@@ -42,6 +43,10 @@ typedef struct	s_pset
 	t_link			*pilb;
 	int				siza;
 	int				sizb;
+	int				mina;
+	int				minb;
+	int				maxa;
+	int				maxb;
 	char			*opes;
 }				t_pset;
 
@@ -87,5 +92,9 @@ void			add_one_ope(char *ope, t_pset *pset);
 void			ope_route(t_pset *pset, char *cmd);
 
 void			simplest_case(int is_pila, t_pset *pset);
+
+int				find_midd(int is_pila, t_pset *pset);
+void			split_pile(int is_pila, t_pset *pset);
+int				get_max_six_times_two(int is_pila, t_pset *pset);
 
 #endif
