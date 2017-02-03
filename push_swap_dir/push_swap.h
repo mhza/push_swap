@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 17:55:05 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/03 16:21:43 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,19 @@ int				is_sortlk(t_link *alk);
 void			free_link(t_link **pile);
 int				ret_err_free(t_link **pile_b, char *cmd);
 
-void			cursor_by_data(t_link **alk, int data);
-void			cursor_by_index(t_link **alk, int index);
-int				get_minlk(int is_pila, t_pset *pset);
+int				get_min(int is_pila, t_pset *pset);
+int				get_min2(int is_pila, t_pset *pset);
 int				get_max(int is_pila, t_pset *pset);
-int				index_first_inversion(t_link *alk);
+int				get_last(int is_pila, t_pset *pset);
+int				get_first(int is_pila, t_pset *pset);
+
+int				index_first_inversion(int is_pila, t_pset *pset);
+int				index_last_inversion(int is_pila, t_pset *pset);
+
 int				get_index(int is_pila, int data, t_pset *pset);
 int				get_data(int is_pila, int index, t_pset *pset);
+void			cursor_by_data(t_link **alk, int data);
+void			cursor_by_index(t_link **alk, int index);
 
 char			*ft_strreald(char *s1, char *s2);
 char			*ft_strreal(char *s1, char *s2);

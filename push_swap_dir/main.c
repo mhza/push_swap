@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 16:41:10 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/03 16:12:54 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void tests(t_pset *pset)
 	// printf("pset.siza %d\npset->pila : ", pset->siza);
 	to_firstlk(&(pset->pila));
 	 print_data_next((pset->pila));
-	// min = get_minlk((pset->pila));
+	// min = get_min((pset->pila));
 	//  printf("lower data %d\n", min);
 	// printf("get_index lower data %d\n", get_index((pset->pila), min));
 	// printf("get_index first inversion %d\n", get_first_inversion((pset->pila)));
@@ -37,7 +37,7 @@ to_firstlk(&(pset->pila));
  print_data_next((pset->pila));
 	// mv_top(1, 4, pset);
 	// add_one_ope(SA,pset);
-	// mv_top(1, get_index(1, pset, get_minlk(1, pset)), pset);
+	// mv_top(1, get_index(1, pset, get_min(1, pset)), pset);
 	// to_firstlk(&(pset->pila));
 
 

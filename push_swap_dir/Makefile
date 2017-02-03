@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/02 18:06:57 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/03 16:18:42 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,13 @@ SRCS	=	main.c \
 			link_utils.c \
 			link_utils2.c \
 			stdout_utils.c \
-			lked_utils.c \
+			chainedlk_utils.c \
+			chainedlk_utils2.c \
 			ope_utils.c \
 			ft_strreal.c \
 			ope_getstr.c \
 			algo_small_set.c \
+			algo_utils.c \
 
 
 OBJS	=   $(SRCS:.c=.o)
