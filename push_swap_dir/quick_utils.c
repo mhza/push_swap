@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:41:57 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 19:13:29 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/04 20:43:03 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_lk_under(t_link *pile, int min, int max)
 	int i;
 
 	i = 0;
-	while (pile)
+	while (pile && (!pile->pack || pile->pack != 1 || !pile->prev))
 	{
 		if (pile->data < (min + max) / 2)
 			i++;

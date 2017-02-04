@@ -6,13 +6,13 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/03 19:50:07 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/04 22:38:03 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 CC		=   gcc
-CFLAGS	= 	-Wall -Wextra -Werror -I. -g
+CFLAGS	= 	-Wall -Wextra -Werror -I.
 RM		=   rm -f
 SRCS	=	main.c \
 			set_link.c \
@@ -28,6 +28,7 @@ SRCS	=	main.c \
 			algo_utils.c \
 			quick.c \
 			quick_utils.c \
+			quick_utils2.c \
 
 
 OBJS	=   $(SRCS:.c=.o)
@@ -38,7 +39,7 @@ all:	$(NAME)
 
 $(NAME):$(OBJS)
 	@make -C $(LIBFT_PATH)
-	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME)
+	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME) -g
 
 clean:
 	@rm -f $(OBJS)

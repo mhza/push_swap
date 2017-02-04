@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 15:52:12 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 14:40:31 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/04 21:14:59 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 void	swap(t_link **top_pile)
 {
 	int	tmp;
+	int	tmp_pack;
 
 	if ((*top_pile) && (*top_pile)->next)
 	{
 		tmp = (*top_pile)->data;
+		tmp_pack = (*top_pile)->pack;
 		(*top_pile)->data = (*top_pile)->next->data;
 		(*top_pile)->next->data = tmp;
+		(*top_pile)->pack = (*top_pile)->next->pack;
+		(*top_pile)->next->pack = tmp_pack;
 	}
 }
 
@@ -56,16 +60,20 @@ void	push(t_link **src, t_link **dest)
 void	rotate(t_link **top_pile)
 {
 	int	tmp;
+	int	tmp_pack;
 
 	if (*top_pile && (*top_pile)->next)
 	{
 		tmp = (*top_pile)->data;
+		tmp_pack = (*top_pile)->pack;
 		while ((*top_pile)->next)
 		{
 			(*top_pile)->data = (*top_pile)->next->data;
+			(*top_pile)->pack = (*top_pile)->next->pack;
 			(*top_pile) = (*top_pile)->next;
 		}
 		(*top_pile)->data = tmp;
+		(*top_pile)->pack = tmp_pack;
 		to_firstlk(top_pile);
 	}
 }
@@ -73,17 +81,21 @@ void	rotate(t_link **top_pile)
 void	rrotate(t_link **bottom_pile)
 {
 	int	tmp;
+	int	tmp_pack;
 
 	if (*bottom_pile && (*bottom_pile)->next)
 	{
 		to_lastlk(bottom_pile);
 		tmp = (*bottom_pile)->data;
+		tmp_pack = (*bottom_pile)->pack;
 		while ((*bottom_pile) && (*bottom_pile)->prev)
 		{
 			(*bottom_pile)->data = (*bottom_pile)->prev->data;
+			(*bottom_pile)->pack = (*bottom_pile)->prev->pack;
 			(*bottom_pile) = (*bottom_pile)->prev;
 		}
 		(*bottom_pile)->data = tmp;
+		(*bottom_pile)->pack = tmp_pack;
 		to_firstlk(bottom_pile);
 	}
 }

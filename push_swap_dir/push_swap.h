@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 19:16:29 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/04 23:05:34 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,12 @@ void			ope_route(t_pset *pset, char *cmd);
 
 void			simplest_case(int is_pila, t_pset *pset);
 
+int				find_mid_pile(t_link *pile, int size, int min, int max);
+int				find_mid_pile2(t_link *pile, int size, int min, int max);
 int				find_midd(int is_pila, t_pset *pset);
 void			split_pile(int is_pila, t_pset *pset);
 int				get_max_six_times_two(int is_pila, t_pset *pset);
+int				get_min_max_mid(int is_pila, t_pset *pset);
+t_pset *split_pack(int is_pila, t_pset *pset);
 
 #endif
