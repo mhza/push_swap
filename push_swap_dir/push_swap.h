@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/04 23:05:34 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 18:50:08 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int				get_last(int is_pila, t_pset *pset);
 int				get_first(int is_pila, t_pset *pset);
 
 int				index_first_inversion(int is_pila, t_pset *pset);
+int		index_first_inversion_dec(int is_pila, t_pset *pset);
 int				index_last_inversion(int is_pila, t_pset *pset);
 
 int				get_index(int is_pila, int data, t_pset *pset);
@@ -99,6 +100,8 @@ int				find_midd(int is_pila, t_pset *pset);
 void			split_pile(int is_pila, t_pset *pset);
 int				get_max_six_times_two(int is_pila, t_pset *pset);
 int				get_min_max_mid(int is_pila, t_pset *pset);
-t_pset *split_pack(int is_pila, t_pset *pset);
+t_pset 			*split_pack(int is_pila, t_pset *pset);
 
+void			three_left_sort(int is_pila, t_pset *pset, int nsort);
+void			three_left_nsort(int is_pila, t_pset *pset);
 #endif

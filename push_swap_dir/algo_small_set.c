@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:47:43 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:23:00 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 17:28:57 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	simplest_case(int is_pila, t_pset *pset)
 	char	*ope;
 
 	pile = is_pila ? pset->pila : pset->pilb;
+	if (countlk(pile) == 1)
+		return ;
 	min = get_min(is_pila, pset);
 	min2 = get_min2(is_pila, pset);
 	max = get_max(is_pila, pset);

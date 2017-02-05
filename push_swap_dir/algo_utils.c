@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:17:16 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:19:33 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 18:49:52 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ int		index_first_inversion(int is_pila, t_pset *pset)
 	while (alk && alk->next)
 	{
 		if (alk->data < alk->next->data)
+		{
+			count++;
+			alk = alk->next;
+		}
+		else
+			return (count);
+	}
+	return (-1);
+}
+
+int		index_first_inversion_dec(int is_pila, t_pset *pset)
+{
+	int count;
+	t_link	*alk;
+
+	count = 1;
+	alk = is_pila ? pset->pila : pset->pilb;
+	while (alk && alk->next)
+	{
+		if (alk->data > alk->next->data)
 		{
 			count++;
 			alk = alk->next;
