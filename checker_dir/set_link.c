@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/01 18:52:43 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 23:01:18 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int		hooklk(t_link **pile, char *str, int i)
 		new = lknew(ft_atoli(str + i));
 		i = ft_atoli(str + i) < 0 ? i + 1 : i;
 		if (!is_twice(*pile, new->data))
+		{
+			free(new);
 			return (-1);
+		}
 		lkadd(pile, new);
 		new->prev->next = new;
 	}
@@ -72,8 +75,10 @@ t_link	*set_pile(char *str)
 			if ((str[i] == '-' && str[i + 1] && !ft_isdigit(str[i + 1])))
 				return (NULL);
 			else
-				hooklk(&pile, str, i);
+				if (hooklk(&pile, str, i) == -1)
+					return (NULL);
 		}
+		i = pile->data < 0 ? i + 1 : i;
 		while (str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 			i++;
 	}

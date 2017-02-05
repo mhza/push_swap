@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 19:37:32 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 21:15:54 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int		main(int ac, char **av)
 	free_link(&(pset.pila));
 	free_link(&(pset.pilb));
 	free(pset.opes);
-// 	int i = 1;
-// 	while (i == 1)
-// 		;
-// 	return (1);
+
+	while (1)
+		;
+	return (1);
 }

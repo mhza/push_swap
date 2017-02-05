@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 15:46:45 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/01 18:53:37 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/05 20:53:52 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,15 @@ LIBFT_PATH	= ../libft
 all:	$(NAME)
 
 $(NAME):$(OBJS)
+	@make -C $(LIBFT_PATH)
 	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME)
 
 clean:
 	@rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean:	clean
+	@rm -f $(NAME)
 	@rm -f $(NAME)
 
 re:		fclean all

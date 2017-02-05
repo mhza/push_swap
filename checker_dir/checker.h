@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:41:25 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/02 10:54:25 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 21:32:31 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define CHECKER_H
 # include "../libft/libft.h"
 
+# define OPTV "-v"
+# define OPTP "-p"
+# define EMPTS ""
+# define ERROR "Error\n"
+# define KO "KO\n"
+# define OK "OK\n"
 # define SA "sa"
 # define SB "sb"
 # define SS "ss"
@@ -55,7 +61,7 @@ int				is_sortlk(t_link *alk);
 void			free_link(t_link **pile);
 int				ret_err_free(t_link **pile_b, char *cmd);
 
-int				ope_read(t_link **pile_a, int option);
+int				ope_read(t_link **pile_a, t_link **pile_b, int option);
 void			ope_route(t_link **pile_a, t_link **pile_b, char *cmd);
 
 void			swap(t_link **top_pile);

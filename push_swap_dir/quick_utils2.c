@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 16:38:47 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 19:43:08 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/05 19:48:24 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int 	split_pack_rec(int is_pila, t_pset *pset)
 	return (size_cpy);
 }
 
-t_pset *split_pack(int is_pila, t_pset *pset)
+t_pset	*split_pack(int is_pila, t_pset *pset)
 {
 	if (index_first_inversion(1, pset) == -1 && countlk(pset->pilb) == 0)
 		return (pset);
