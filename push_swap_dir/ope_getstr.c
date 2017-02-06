@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 20:59:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 14:34:36 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 22:07:17 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ void	mv_top(int is_pila, int index, t_pset *pset)
 		ope = is_pila ? RA : RB;
 		while (++i < index - 1)
 			add_one_ope(ope, pset);
+	}
+}
+
+void	pushall_isna(int is_pila, t_pset *pset)
+{
+	char	*ope;
+	t_link	*pile;
+	int		size;
+
+	ope = is_pila ? PA : PB;
+	pile = !is_pila ? pset->pila : pset->pilb;
+	size = countlk(pile);
+	while (size)
+	{
+		add_one_ope(ope, pset);
+		size--;
 	}
 }
 

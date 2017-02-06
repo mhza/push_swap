@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 16:48:54 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 22:38:33 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,6 @@ typedef struct	s_count
 	int		sz_cpy;
 }				t_count;
 
-typedef struct	s_val
-{
-	int		i;
-	int		min;
-	int		min2;
-	int		max;
-}				t_val;
-
 int				init_pile(t_link **pile, int ac, char **av, int option);
 
 void			print_data_prev(t_link *begin_pile);
@@ -97,6 +89,7 @@ int				index_first_inversion_dec(int is_pila, t_pset *pset);
 int				index_last_inversion(int is_pila, t_pset *pset);
 
 int				get_index(int is_pila, int data, t_pset *pset);
+// int				get_pindex(t_link *alk);
 int				get_data(int is_pila, int index, t_pset *pset);
 void			cursor_by_data(t_link **alk, int data);
 void			cursor_by_index(t_link **alk, int index);
@@ -107,8 +100,9 @@ char			*ft_strreal(char *s1, char *s2);
 void			mv_top(int is_pila, int index, t_pset *pset);
 void			add_one_ope(char *ope, t_pset *pset);
 void			ope_route(t_pset *pset, char *cmd);
+void			pushall_isna(int is_pila, t_pset *pset);
 
-void			simplest_case(int is_pila, t_pset *pset);
+void			sort_small(int is_pila, t_pset *pset);
 
 int				find_mid_pile(t_link *pile, int size, int min, int max);
 int				find_mid_pile2(t_link *pile, int size, int min, int max);
@@ -118,6 +112,7 @@ int				get_max_six_times_two(int is_pila, t_pset *pset);
 int				get_min_max_mid(int is_pila, t_pset *pset);
 int				get_set_pack_size(int is_pila, t_pset *pset);
 t_pset			*split_pack(int is_pila, t_pset *pset);
+int				split_pack_rec(int is_pila, t_pset *pset);
 
 void			three_left_sort(int is_pila, t_pset *pset, int nsort);
 void			three_left_nsort(int is_pila, t_pset *pset);
