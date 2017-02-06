@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:17:16 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 18:49:52 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:56:29 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		index_first_inversion(int is_pila, t_pset *pset)
 {
-	int count;
+	int		count;
 	t_link	*alk;
 
 	count = 1;
@@ -34,7 +34,7 @@ int		index_first_inversion(int is_pila, t_pset *pset)
 
 int		index_first_inversion_dec(int is_pila, t_pset *pset)
 {
-	int count;
+	int		count;
 	t_link	*alk;
 
 	count = 1;
@@ -54,7 +54,7 @@ int		index_first_inversion_dec(int is_pila, t_pset *pset)
 
 int		index_last_inversion(int is_pila, t_pset *pset)
 {
-	int count;
+	int		count;
 	t_link	*alk;
 
 	count = 1;

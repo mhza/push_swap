@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 11:46:54 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:19:58 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-char	*set_pile_init(char *str, t_link **pile)
+static char	*set_pile_init(char *str, t_link **pile)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ char	*set_pile_init(char *str, t_link **pile)
 	return (str + i);
 }
 
-int		hooklk(t_link **pile, char *str, int i)
+static int	hooklk(t_link **pile, char *str, int i)
 {
 	t_link	*new;
 
@@ -56,7 +56,7 @@ int		hooklk(t_link **pile, char *str, int i)
 	return (i);
 }
 
-int		set_pile(t_link **pile, char *str)
+static int	set_pile(t_link **pile, char *str)
 {
 	int		i;
 

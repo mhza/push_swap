@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 20:59:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 12:34:26 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:34:36 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,13 @@ void	mv_top(int is_pila, int index, t_pset *pset)
 	{
 		ope = is_pila ? RRA : RRB;
 		while (++i < size - index + 1)
-		{
-			pset->opes = ft_strreal(pset->opes, ope);
-			ope_route(pset, ope);
-		}
+			add_one_ope(ope, pset);
 	}
 	else
 	{
 		ope = is_pila ? RA : RB;
 		while (++i < index - 1)
-		{
-			pset->opes = ft_strreal(pset->opes, ope);
-			ope_route(pset, ope);
-		}
+			add_one_ope(ope, pset);
 	}
 }
 

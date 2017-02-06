@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/05 15:36:43 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/06 15:26:38 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS	=	main.c \
 			algo_utils.c \
 			quick.c \
 			quick_utils.c \
-			quick_utils2.c \
+			quick_pack.c \
+			quick_pack_utils.c \
 			three_left_sort.c \
 			three_left_nsort.c \
 
@@ -41,7 +42,7 @@ all:	$(NAME)
 
 $(NAME):$(OBJS)
 	@make -C $(LIBFT_PATH)
-	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME) -g
+	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME)
 
 clean:
 	@rm -f $(OBJS)

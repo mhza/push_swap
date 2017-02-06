@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/01 19:05:28 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:20:21 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*set_pile_init(char *str, t_link **pile)
+static char	*set_pile_init(char *str, t_link **pile)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ char	*set_pile_init(char *str, t_link **pile)
 	return (str + i);
 }
 
-int		hooklk(t_link **pile, char *str, int i)
+static int	hooklk(t_link **pile, char *str, int i)
 {
 	t_link	*new;
 
@@ -46,59 +46,57 @@ int		hooklk(t_link **pile, char *str, int i)
 		new = lknew(ft_atoli(str + i));
 		i = ft_atoli(str + i) < 0 ? i + 1 : i;
 		if (!is_twice(*pile, new->data))
+		{
+			free(new);
 			return (-1);
+		}
 		lkadd(pile, new);
 		new->prev->next = new;
 	}
 	return (i);
 }
 
-t_link	*set_pile(char *str)
+static int	set_pile(t_link **pile, char *str)
 {
 	int		i;
-	t_link	*pile;
 
-	if ((str = set_pile_init(str, &pile)) == NULL)
-		return (NULL);
 	i = 0;
 	while (str && str[i])
 	{
 		while (str[i] && str[i] == ' ')
 			i++;
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
-			return (NULL);
+			return (0);
 		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 		{
 			if ((str[i] == '-' && str[i + 1] && !ft_isdigit(str[i + 1])))
-				return (NULL);
-			else
-				hooklk(&pile, str, i);
+				return (0);
+			else if (*pile)
+				if (hooklk(pile, str, i) == -1)
+					return (0);
 		}
+		i = (*pile)->data < 0 ? i + 1 : i;
 		while (str[i] && str[i] != ' ' && ft_isdigit(str[i]))
 			i++;
 	}
-	return (pile);
+	return (1);
 }
 
 int		init_pile(t_link **pile, int ac, char **av, int option)
 {
 	int		i;
-	t_link	*hash_pile;
 
 	i = 1 + option;
-	if ((*pile = set_pile(av[i])) == NULL)
+	if ((av[i] = set_pile_init(av[i], pile)) == NULL)
 		return (0);
-	while (++i < ac && av[i])
+	while (i < ac && av[i])
 	{
+		to_lastlk(pile);
 		if (ft_strlen(av[i]) == 1 && !ft_isdigit(av[i][0]))
 			return (0);
-		if ((hash_pile = set_pile(av[i])) == NULL ||
-		!is_twice_global(hash_pile, *pile))
+		if (!set_pile(pile, av[i]))
 			return (0);
-		to_firstlk(&hash_pile);
-		(*pile)->next = hash_pile;
-		hash_pile->prev = *pile;
-		to_lastlk(pile);
+		i++;
 	}
 	to_firstlk(pile);
 	return (1);

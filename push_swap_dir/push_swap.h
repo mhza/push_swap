@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 19:47:31 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 15:27:16 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 
 # define SA "sa\n"
 # define SB "sb\n"
@@ -50,7 +50,6 @@ typedef struct	s_pset
 	char			*opes;
 }				t_pset;
 
-t_link			*set_pile(char *str);
 int				init_pile(t_link **pile, int ac, char **av, int option);
 
 void			print_data_prev(t_link *begin_pile);
@@ -100,7 +99,8 @@ int				find_midd(int is_pila, t_pset *pset);
 void			split_pile(int is_pila, t_pset *pset);
 int				get_max_six_times_two(int is_pila, t_pset *pset);
 int				get_min_max_mid(int is_pila, t_pset *pset);
-t_pset 			*split_pack(int is_pila, t_pset *pset);
+int				get_set_pack_size(int is_pila, t_pset *pset);
+t_pset			*split_pack(int is_pila, t_pset *pset);
 
 void			three_left_sort(int is_pila, t_pset *pset, int nsort);
 void			three_left_nsort(int is_pila, t_pset *pset);

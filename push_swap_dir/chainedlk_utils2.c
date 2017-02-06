@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:16:14 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:16:44 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:31:11 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void  cursor_by_data(t_link **alk, int data)
+void	cursor_by_data(t_link **alk, int data)
 {
 	while (alk && *alk && (*alk)->data != data)
 		*alk = (*alk)->next;
@@ -47,7 +47,7 @@ int		get_data(int is_pila, int index, t_pset *pset)
 	t_link	**alk;
 	int		data;
 
-	alk = is_pila ? (&pset->pila): &(pset->pilb);
+	alk = is_pila ? (&pset->pila) : &(pset->pilb);
 	cursor_by_index(alk, index);
 	data = (*alk)->data;
 	to_firstlk(alk);

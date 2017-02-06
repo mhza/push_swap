@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:41:25 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 12:48:42 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:55:30 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct	s_link
 	struct s_link	*prev;
 }				t_link;
 
-int				set_pile(t_link **pile, char *str);
 int				init_pile(t_link **pile, int ac, char **av, int option);
 
 void			print_data_prev(t_link *begin_pile);

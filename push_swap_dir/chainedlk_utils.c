@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 19:24:15 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/03 16:21:26 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 14:32:05 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		get_min(int is_pila, t_pset *pset)
 {
-	int min;
+	int		min;
 	t_link	*alk;
 
 	alk = is_pila ? pset->pila : pset->pilb;
@@ -34,8 +34,8 @@ int		get_min(int is_pila, t_pset *pset)
 
 int		get_min2(int is_pila, t_pset *pset)
 {
-	int min;
-	int min2;
+	int		min;
+	int		min2;
 	t_link	*alk;
 
 	alk = is_pila ? pset->pila : pset->pilb;
@@ -56,7 +56,7 @@ int		get_min2(int is_pila, t_pset *pset)
 
 int		get_max(int is_pila, t_pset *pset)
 {
-	int max;
+	int		max;
 	t_link	*alk;
 
 	alk = is_pila ? pset->pila : pset->pilb;
