@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/05 21:25:53 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 12:50:22 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,13 @@ void	ope_route(t_link **pile_a, t_link **pile_b, char *cmd)
 		rrotate(pile_a);
 	if (pile_b && (!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
 		rrotate(pile_b);
-	if (cmd)
-		free(cmd);
 }
 
-int		ope_read(t_link **pile_a, t_link **pile_b,int option)
+int		ope_read(t_link **pile_a, t_link **pile_b, int option)
 {
 	char	*cmd;
 	int		read;
-	// t_link	**pile_b;
 
-	// pile_b = ft_memalloc(sizeof(t_link*));
-	// *pile_b = NULL;
 	read = get_next_line(0, &cmd);
 	while (read && read != READ_ERROR)
 	{
@@ -54,13 +49,14 @@ int		ope_read(t_link **pile_a, t_link **pile_b,int option)
 			if (option)
 				print_both(pile_a, pile_b);
 		}
-		else if (ft_strcmp(cmd, ""))
-			return (ret_err_free(pile_b, cmd));
-		else if (!ft_strcmp(cmd, "") && get_next_line(0, &cmd))
-			return (ret_err_free(pile_b, cmd));
+		else if (ft_strcmp(cmd, "") || get_next_line(0, &cmd))
+		{
+			free(cmd);
+			return (-1);
+		}
+		if (cmd)
+			free(cmd);
 		read = get_next_line(0, &cmd);
 	}
-	// free_link(pile_b);
-	// free(pile_b);
 	return (READ_END);
 }
