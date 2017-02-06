@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 14:20:21 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 16:31:27 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	set_pile(t_link **pile, char *str)
 	return (1);
 }
 
-int		init_pile(t_link **pile, int ac, char **av, int option)
+int			init_pile(t_link **pile, int ac, char **av, int option)
 {
 	int		i;
 

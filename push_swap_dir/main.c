@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 14:40:45 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 17:04:33 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int ac, char **av)
 	pset.siza = countlk((pset.pila));
 	pset.mina = get_min(1, &pset);
 	pset.maxa = get_max(1, &pset);
+	print_data_next(pset.pila);
 	if (pset.siza < 6)
 		simplest_case(1, &pset);
 	else

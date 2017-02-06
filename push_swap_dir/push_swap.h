@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 15:27:16 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/06 16:48:54 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ typedef struct	s_pset
 	int				maxb;
 	char			*opes;
 }				t_pset;
+
+typedef struct	s_count
+{
+	int		mid_val;
+	int		count;
+	int		sz;
+	int		sz_tmp;
+	int		sz_cpy;
+}				t_count;
+
+typedef struct	s_val
+{
+	int		i;
+	int		min;
+	int		min2;
+	int		max;
+}				t_val;
 
 int				init_pile(t_link **pile, int ac, char **av, int option);
 
