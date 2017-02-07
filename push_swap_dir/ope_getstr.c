@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 20:59:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 22:07:17 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 09:14:04 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	mv_top(int is_pila, int index, t_pset *pset)
 
 	if (!pset || index < 0)
 		return ;
-	size = is_pila ? pset->siza : pset->sizb;
+	size = is_pila ? countlk(pset->pila) : countlk(pset->pilb);
 	i = -1;
 	if (pset && index > size / 2 + 1)
 	{

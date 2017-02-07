@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 16:38:47 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 22:01:34 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 09:24:17 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ int			split_pack_rec(int is_pila, t_pset *pset)
 }
 
 t_pset		*split_pack(int is_pila, t_pset *pset)
-{//ft_putstr("FUCK 3\n");
+{
 	if (index_first_inversion(1, pset) == -1 && countlk(pset->pilb) == 0)
 		return (pset);
-	else if ((countlk(pset->pilb) <= 3 && countlk(pset->pila) <= 3) || (index_first_inversion(1, pset) == -1 &&
+	else if ((countlk(pset->pilb) <= 3 && countlk(pset->pila) <= 3) ||
+	(index_first_inversion(1, pset) == -1 &&
 	index_first_inversion_dec(0, pset) == -1))
 	{
 		if (index_first_inversion(1, pset))
@@ -101,6 +102,4 @@ t_pset		*split_pack(int is_pila, t_pset *pset)
 	if (split_pack_rec(is_pila, pset) < 6)
 		return (split_pack(1 - is_pila, pset));
 	return (split_pack(is_pila, pset));
-
-
 }

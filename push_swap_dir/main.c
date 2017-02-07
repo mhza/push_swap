@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 22:32:38 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 09:19:03 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,34 @@ pset.siza = countlk((pset.pila));
 	else
 	{
 		split_pile(1, &pset);
-
-		print_data_next(pset.pila);
-		print_data_next(pset.pilb);
-		ft_putstr("\n\n=====\n");
 		sort_small(1, &pset);
-		if (siza > 12)
+		// if (siza > 12)
 			split_pack(0, &pset);
-		else if (siza <= 8)
-		{
-			split_pack_rec(0, &pset);
-			print_data_next(pset.pila);
-			print_data_next(pset.pilb);
-			ft_putstr("\n\n");
-			pushall_isna(1, &pset);
-
-			print_data_next(pset.pila);
-			print_data_next(pset.pilb);
-			ft_putstr("\n\n");
-		}
-		else if (siza <= 12)
-		{
-			split_pack_rec(0, &pset);
-			print_data_next(pset.pila);
-			print_data_next(pset.pilb);
-			ft_putstr("\n\n");
-			three_left_sort(1, &pset, 1);
-			pushall_isna(1, &pset);
-
-			print_data_next(pset.pila);
-			print_data_next(pset.pilb);
-			ft_putstr("\n\n");
-		}
+		// else if (siza <= 8)
+		// {
+		// 	split_pack_rec(0, &pset);
+		// 	print_data_next(pset.pila);
+		// 	print_data_next(pset.pilb);
+		// 	ft_putstr("\n\n");
+		// 	pushall_isna(1, &pset);
+		//
+		// 	print_data_next(pset.pila);
+		// 	print_data_next(pset.pilb);
+		// 	ft_putstr("\n\n");
+		// }
+		// else if (siza <= 12)
+		// {
+		// 	split_pack_rec(0, &pset);
+		// 	print_data_next(pset.pila);
+		// 	print_data_next(pset.pilb);
+		// 	ft_putstr("\n\n");
+		// 	three_left_sort(1, &pset, 1);
+		// 	pushall_isna(1, &pset);
+		//
+		// 	print_data_next(pset.pila);
+		// 	print_data_next(pset.pilb);
+		// 	ft_putstr("\n\n");
+		// }
 	}
 	// ft_putstr(pset.opes);
 	print_data_next(pset.pila);
