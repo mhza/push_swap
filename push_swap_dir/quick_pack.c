@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 16:38:47 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 14:43:03 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:37:50 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_link	*push_rest(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
+static t_link	*push_rest(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 {
 	char	*ope;
 	t_link	*temp;
@@ -37,7 +37,7 @@ t_link	*push_rest(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 	return (pile);
 }
 
-t_link	*push_mid(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
+static t_link	*push_mid(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 {
 	char	*ope;
 	t_link	*temp;
@@ -65,7 +65,7 @@ t_link	*push_mid(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 	return (pile);
 }
 
-int		split_pack_rec(int is_pila, t_pset *pset)
+static int		split_pack_rec(int is_pila, t_pset *pset)
 {
 	t_count	cs;
 	t_link	*pile;
@@ -87,7 +87,7 @@ int		split_pack_rec(int is_pila, t_pset *pset)
 	return (cs.sz_cpy);
 }
 
-t_pset	*split_pack(int is_pila, t_pset *pset)
+t_pset			*split_pack(int is_pila, t_pset *pset)
 {
 	if (countlk(pset->pilb) == 0 && index_first_inversion(1, pset) == -1)
 		return (pset);
@@ -96,9 +96,9 @@ t_pset	*split_pack(int is_pila, t_pset *pset)
 	index_first_inversion_dec(0, pset) == -1))
 	{
 		if (index_first_inversion(1, pset))
-			sort_small(1, pset);
+			under_five(1, pset);
 		if (index_first_inversion(0, pset))
-			sort_small(0, pset);
+			under_five(0, pset);
 		while (pset->pilb && countlk(pset->pilb))
 			add_one_ope(PA, pset);
 		return (pset);

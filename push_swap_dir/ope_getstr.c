@@ -6,11 +6,24 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 20:59:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 09:14:04 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:41:15 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	*ft_strreal(char *s1, char *s2)
+{
+	char	*new;
+
+	new = NULL;
+	if (s1 == NULL || *s1 == '\0')
+		new = ft_strdup(s2);
+	else if ((new = ft_strjoin(s1, s2)) == NULL)
+		return (NULL);
+	free(s1);
+	return (new);
+}
 
 void	mv_top(int is_pila, int index, t_pset *pset)
 {
@@ -33,22 +46,6 @@ void	mv_top(int is_pila, int index, t_pset *pset)
 		ope = is_pila ? RA : RB;
 		while (++i < index - 1)
 			add_one_ope(ope, pset);
-	}
-}
-
-void	pushall_isna(int is_pila, t_pset *pset)
-{
-	char	*ope;
-	t_link	*pile;
-	int		size;
-
-	ope = is_pila ? PA : PB;
-	pile = !is_pila ? pset->pila : pset->pilb;
-	size = countlk(pile);
-	while (size)
-	{
-		add_one_ope(ope, pset);
-		size--;
 	}
 }
 

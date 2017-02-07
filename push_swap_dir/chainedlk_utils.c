@@ -6,11 +6,35 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 19:24:15 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 15:02:04 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:40:33 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	cursor_by_index(t_link **alk, int index)
+{
+	while (alk && *alk && index > 1)
+	{
+		*alk = (*alk)->next;
+		index--;
+	}
+}
+
+int		get_index(int is_pila, int data, t_pset *pset)
+{
+	int		count;
+	t_link	*alk;
+
+	count = 1;
+	alk = is_pila ? pset->pila : pset->pilb;
+	while (alk && alk->data != data)
+	{
+		count++;
+		alk = alk->next;
+	}
+	return (count);
+}
 
 int		get_min(int is_pila, t_pset *pset)
 {
@@ -73,26 +97,3 @@ int		get_max(int is_pila, t_pset *pset)
 		max = alk->data;
 	return (max);
 }
-
-// int		get_last(int is_pila, t_pset *pset)
-// {
-// 	int		data;
-// 	t_link	*alk;
-//
-// 	alk = is_pila ? pset->pila : pset->pilb;
-// 	to_lastlk(&alk);
-// 	data = alk->data;
-// 	to_firstlk(&alk);
-// 	return (data);
-// }
-//
-// int		get_first(int is_pila, t_pset *pset)
-// {
-// 	int		data;
-// 	t_link	*alk;
-//
-// 	alk = is_pila ? pset->pila : pset->pilb;
-// 	to_firstlk(&alk);
-// 	data = alk->data;
-// 	return (data);
-// }

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:47:43 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 09:23:38 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:37:55 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	four_left_sort(int is_pila, t_pset *pset)
 	add_one_ope(ope, pset);
 }
 
-void	sort_small(int is_pila, t_pset *pset)
+void	under_five(int is_pila, t_pset *pset)
 {
 	t_link	*pile;
 	char	*ope;

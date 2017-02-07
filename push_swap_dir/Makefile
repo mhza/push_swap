@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/07 15:06:11 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/07 15:42:16 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,11 @@ RM		=   rm -f
 SRCS	=	main.c \
 			set_link.c \
 			link_utils.c \
-			link_utils2.c \
 			stdout_utils.c \
 			chainedlk_utils.c \
-			chainedlk_utils2.c \
 			ope_utils.c \
-			ft_strreal.c \
 			ope_getstr.c \
-			algo_utils.c \
+			get_inversions.c \
 			quick.c \
 			quick_utils.c \
 			quick_pack.c \

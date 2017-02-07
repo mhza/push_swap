@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 15:03:50 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:39:53 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,47 +72,36 @@ void			to_firstlk(t_link **alk);
 void			to_lastlk(t_link **alk);
 int				countlk(t_link *alk);
 
-int				is_twice(t_link *pile, int data);
-int				is_twice_global(t_link *hash_pile, t_link *pile);
-int				is_sortlk(t_link *alk);
 void			free_link(t_link **pile);
-int				ret_err_free(t_link **pile_b, char *cmd);
 
+int				get_index(int is_pila, int data, t_pset *pset);
+void			cursor_by_index(t_link **alk, int index);
 int				get_min(int is_pila, t_pset *pset);
 int				get_min2(int is_pila, t_pset *pset);
 int				get_max(int is_pila, t_pset *pset);
-// int				get_last(int is_pila, t_pset *pset);
-// int				get_first(int is_pila, t_pset *pset);
 
 int				index_first_inversion(int is_pila, t_pset *pset);
 int				index_first_inversion_dec(int is_pila, t_pset *pset);
-// int				index_last_inversion(int is_pila, t_pset *pset);
 
-int				get_index(int is_pila, int data, t_pset *pset);
-// int				get_data(int is_pila, int index, t_pset *pset);
-// void			cursor_by_data(t_link **alk, int data);
-void			cursor_by_index(t_link **alk, int index);
-
-char			*ft_strreald(char *s1, char *s2);
 char			*ft_strreal(char *s1, char *s2);
-
 void			mv_top(int is_pila, int index, t_pset *pset);
 void			add_one_ope(char *ope, t_pset *pset);
 void			ope_route(t_pset *pset, char *cmd);
-void			pushall_isna(int is_pila, t_pset *pset);
-
-void			sort_small(int is_pila, t_pset *pset);
 
 int				find_mid_pile(t_link *pile, int size, int min, int max);
 int				find_mid_pile2(t_link *pile, int size, int min, int max);
 int				find_midd(int is_pila, t_pset *pset);
-void			split_pile(int is_pila, t_pset *pset);
 int				get_max_six_times_two(int is_pila, t_pset *pset);
+
+void			split_pile(int is_pila, t_pset *pset);
+
 int				get_min_max_mid(int is_pila, t_pset *pset);
 int				get_set_pack_size(int is_pila, t_pset *pset);
+
 t_pset			*split_pack(int is_pila, t_pset *pset);
-int				split_pack_rec(int is_pila, t_pset *pset);
 
 void			three_left_sort(int is_pila, t_pset *pset, int nsort);
 void			three_left_nsort(int is_pila, t_pset *pset);
+void			under_five(int is_pila, t_pset *pset);
+
 #endif

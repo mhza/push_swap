@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:29:33 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 15:05:07 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:41:37 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_push(int is_pila, t_link **pile, t_pset *pset, int *count)
+static void	add_push(int is_pila, t_link **pile, t_pset *pset, int *count)
 {
 	char	*push;
 	t_link	*temp;
@@ -25,7 +25,7 @@ void	add_push(int is_pila, t_link **pile, t_pset *pset, int *count)
 	(*count)--;
 }
 
-void	split_pile(int is_pila, t_pset *pset)
+void		split_pile(int is_pila, t_pset *pset)
 {
 	int		mid_val;
 	int		count;

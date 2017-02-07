@@ -6,11 +6,25 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 15:17:35 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:37:15 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		free_link(t_link **pile)
+{
+	if (pile)
+	{
+		while (*pile && (*pile)->next)
+		{
+			*pile = (*pile)->next;
+			free((*pile)->prev);
+		}
+		if (*pile)
+			free(*pile);
+	}
+}
 
 static void	set_pset(t_pset *pset)
 {
@@ -35,11 +49,11 @@ int			main(int ac, char **av)
 	siza = countlk(pset.pila);
 	set_pset(&pset);
 	if (siza < 6)
-		sort_small(1, &pset);
+		under_five(1, &pset);
 	else
 	{
 		split_pile(1, &pset);
-		sort_small(1, &pset);
+		under_five(1, &pset);
 		split_pack(0, &pset);
 	}
 	ft_putstr(pset.opes);

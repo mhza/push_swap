@@ -6,11 +6,23 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 16:31:27 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:28:40 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int			is_twice(t_link *pile, int data)
+{
+	to_firstlk(&pile);
+	while (pile)
+	{
+		if (data == pile->data)
+			return (0);
+		pile = pile->next;
+	}
+	return (1);
+}
 
 static char	*set_pile_init(char *str, t_link **pile)
 {
