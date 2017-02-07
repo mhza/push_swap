@@ -6,13 +6,13 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 16:38:47 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 09:24:17 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 11:54:54 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_rest(int is_pila, t_pset *pset, t_link **pile, t_count *cs)
+static void	push_rest(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 {
 	char	*ope;
 	t_link	*temp;
@@ -24,19 +24,19 @@ static void	push_rest(int is_pila, t_pset *pset, t_link **pile, t_count *cs)
 		if (cs->sz_cpy != 6)
 		{
 			ope = is_pila ? PB : PA;
-			temp = (*pile)->next;
+			temp = (pile)->next;
 			add_one_ope(ope, pset);
-			(*pile)->pack = cs->sz;
-			*pile = temp;
+			(pile)->pack = cs->sz;
+			pile = temp;
 		}
-		if (*pile)
-			(*pile)->pack = cs->sz;
+		if (pile)
+			(pile)->pack = cs->sz;
 		cs->sz--;
 		cs->count--;
 	}
 }
 
-static void	push_mid(int is_pila, t_pset *pset, t_link **pile, t_count *cs)
+static void	push_mid(int is_pila, t_pset *pset, t_link *pile, t_count *cs)
 {
 	char	*ope;
 	t_link	*temp;
@@ -44,14 +44,14 @@ static void	push_mid(int is_pila, t_pset *pset, t_link **pile, t_count *cs)
 	while (cs->sz_tmp && cs->sz_cpy > 3)
 	{
 		(cs->sz_tmp)--;
-		if ((is_pila && cs->sz_cpy > 3 && (*pile)->data < cs->mid_val) ||
-		(!is_pila && ((cs->sz_cpy > 3 && (*pile)->data >= cs->mid_val))))
+		if ((is_pila && cs->sz_cpy > 3 && (pile)->data < cs->mid_val) ||
+		(!is_pila && ((cs->sz_cpy > 3 && (pile)->data >= cs->mid_val))))
 		{
 			ope = is_pila ? PB : PA;
-			temp = (*pile)->next;
+			temp = (pile)->next;
 			add_one_ope(ope, pset);
-			(*pile)->pack = cs->sz_cpy != 3 ? cs->sz - cs->sz_cpy / 2 : cs->sz;
-			*pile = temp;
+			(pile)->pack = cs->sz_cpy != 3 ? cs->sz - cs->sz_cpy / 2 : cs->sz;
+			pile = temp;
 			(cs->sz)--;
 		}
 		else
@@ -76,8 +76,8 @@ int			split_pack_rec(int is_pila, t_pset *pset)
 	cs.sz_tmp = cs.sz;
 	cs.sz_cpy = cs.sz;
 	cs.count = 0;
-	push_mid(is_pila, pset, &pile, &cs);
-	push_rest(is_pila, pset, &pile, &cs);
+	push_mid(is_pila, pset, pile, &cs);
+	push_rest(is_pila, pset, pile, &cs);
 	if (cs.sz_cpy == 6)
 		three_left_sort(is_pila, pset, 1);
 	if (cs.sz_cpy == 3)
@@ -87,19 +87,21 @@ int			split_pack_rec(int is_pila, t_pset *pset)
 
 t_pset		*split_pack(int is_pila, t_pset *pset)
 {
-	if (index_first_inversion(1, pset) == -1 && countlk(pset->pilb) == 0)
+	if (countlk(pset->pilb) == 0 && pset->pila && index_first_inversion(1, pset) == -1)
 		return (pset);
-	else if ((countlk(pset->pilb) <= 3 && countlk(pset->pila) <= 3) ||
-	(index_first_inversion(1, pset) == -1 &&
-	index_first_inversion_dec(0, pset) == -1))
+	else if ((countlk(pset->pilb) < 6 && countlk(pset->pila) < 9) ||
+	(pset->pila && index_first_inversion(1, pset) == -1 &&
+	 pset->pilb && index_first_inversion_dec(0, pset) == -1))
 	{
 		if (index_first_inversion(1, pset))
-			three_left_sort(1, pset, 1);
+			sort_small(1, pset);
+		if (index_first_inversion(0, pset))
+			sort_small(0, pset);
 		while (pset->pilb && countlk(pset->pilb))
 			add_one_ope(PA, pset);
 		return (pset);
 	}
-	if (split_pack_rec(is_pila, pset) < 6)
+	if (split_pack_rec(is_pila, pset) <= 6)
 		return (split_pack(1 - is_pila, pset));
 	return (split_pack(is_pila, pset));
 }

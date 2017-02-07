@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/06 21:42:22 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/07 11:55:48 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ all:	$(NAME)
 
 $(NAME):$(OBJS)
 	@make -C $(LIBFT_PATH)
-	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME) -g
+	@$(CC) $(CFLAG) $(SRCS) -L../libft -lft -o $(NAME)
 
 clean:
 	@rm -f $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 09:19:03 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 11:49:25 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int ac, char **av)
 
 	if (!init_pile(&(pset.pila), ac, av, 0))
 		return (ret_main(&(pset.pila), "Error\n", 0, 0));
-print_data_next(pset.pila);
+ print_data_next(pset.pila);
 pset.siza = countlk((pset.pila));
 	siza = countlk((pset.pila));
 	pset.mina = get_min(1, &pset);
@@ -65,8 +65,8 @@ pset.siza = countlk((pset.pila));
 		// 	ft_putstr("\n\n");
 		// }
 	}
-	// ft_putstr(pset.opes);
-	print_data_next(pset.pila);
+	ft_putstr(pset.opes);
+	// print_data_next(pset.pila);
 	free_link(&(pset.pila));
 	free_link(&(pset.pilb));
 	free(pset.opes);
