@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:16:14 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 22:38:40 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 14:41:24 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,6 @@ void	cursor_by_index(t_link **alk, int index)
 		index--;
 	}
 }
-
-// int		get_pindex(t_link	*alk)
-// {
-// 	int		count;
-//
-// 	count = 1;
-// 	while (alk && alk->data != data)
-// 	{
-// 		count++;
-// 		alk = alk->next;
-// 	}
-// 	return (count);
-// }
 
 int		get_index(int is_pila, int data, t_pset *pset)
 {

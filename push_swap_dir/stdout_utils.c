@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 23:19:20 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 22:32:05 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 14:38:32 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	print_data_next(t_link *begin_pile)
 	while (begin_pile)
 	{
 		ft_putnbr(begin_pile->data);
-		// if (begin_pile->data % 10)
+		if (begin_pile->data % 10)
 			ft_putstr("  ");
-		// else
-		// 	ft_putstr("\n");
+		else
+			ft_putstr("\n");
 		begin_pile = begin_pile->next;
 	}
 	ft_putstr("\n");
