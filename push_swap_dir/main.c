@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 14:45:44 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:17:35 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int			main(int ac, char **av)
 		return (0);
 	if ((pset.opes = ft_strnew(sizeof(char))) == NULL)
 		return (0);
-	set_pset(&pset);
-	siza = countlk((pset.pila));
 	if (!init_pile(&(pset.pila), ac, av, 0))
 		return (ret_main(&(pset.pila), "Error\n", 0, 0));
+	siza = countlk(pset.pila);
+	set_pset(&pset);
 	if (siza < 6)
 		sort_small(1, &pset);
 	else
@@ -42,7 +42,7 @@ int			main(int ac, char **av)
 		sort_small(1, &pset);
 		split_pack(0, &pset);
 	}
-	print_data_next(pset.pila);
+	ft_putstr(pset.opes);
 	free_link(&(pset.pila));
 	free_link(&(pset.pilb));
 	free(pset.opes);

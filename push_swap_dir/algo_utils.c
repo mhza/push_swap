@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 16:17:16 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/06 21:44:01 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/07 15:00:19 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,23 @@ int		index_first_inversion_dec(int is_pila, t_pset *pset)
 	return (-1);
 }
 
-int		index_last_inversion(int is_pila, t_pset *pset)
-{
-	int		count;
-	t_link	*alk;
-
-	count = 1;
-	alk = is_pila ? pset->pila : pset->pilb;
-	to_lastlk(&alk);
-	while (alk && alk->prev)
-	{
-		if (alk->data > alk->prev->data)
-		{
-			count++;
-			alk = alk->prev;
-		}
-		else
-			return (count);
-	}
-	return (-1);
-}
+// int		index_last_inversion(int is_pila, t_pset *pset)
+// {
+// 	int		count;
+// 	t_link	*alk;
+//
+// 	count = 1;
+// 	alk = is_pila ? pset->pila : pset->pilb;
+// 	to_lastlk(&alk);
+// 	while (alk && alk->prev)
+// 	{
+// 		if (alk->data > alk->prev->data)
+// 		{
+// 			count++;
+// 			alk = alk->prev;
+// 		}
+// 		else
+// 			return (count);
+// 	}
+// 	return (-1);
+// }

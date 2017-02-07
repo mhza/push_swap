@@ -6,7 +6,7 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/07 11:55:48 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/07 15:06:11 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRCS	=	main.c \
 			under_five_sort.c \
 			three_left_sort.c \
 			three_left_nsort.c \
-
 
 OBJS	=   $(SRCS:.c=.o)
 
