@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 17:19:01 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 17:45:35 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ static void	set_pset(t_pset *pset)
 	pset->maxa = get_max(1, pset);
 }
 
+static void	short_cut(int is_pila, t_pset *pset)
+{
+	t_link	*pile;
+	char	*ope;
+
+	pile = is_pila ? pset->pila : pset->pilb;
+	if (pile->data == get_min2(is_pila, pset) &&
+		pile->next->data == get_min(is_pila, pset))
+	{
+		ope = is_pila ? SA : SB;
+		add_one_ope(ope, pset);
+	}
+}
+
 static int	if_error(t_pset *pset, char *str)
 {
 	write(2, str, ft_strlen(str));
@@ -56,9 +70,10 @@ int			main(int ac, char **av)
 		return (if_error(&pset, ERROR));
 	siza = countlk(pset.pila);
 	set_pset(&pset);
-	if (siza < 6)
+	short_cut(1, &pset);
+	if (siza > 1 && siza < 6 && index_first_inversion(1, &pset) != -1)
 		under_five(1, &pset);
-	else
+	else if (siza > 1 && index_first_inversion(1, &pset) != -1)
 	{
 		split_pile(1, &pset);
 		under_five(1, &pset);
