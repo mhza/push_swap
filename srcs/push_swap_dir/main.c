@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 17:45:35 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 18:10:24 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ static void	set_pset(t_pset *pset)
 	pset->siza = countlk((pset->pila));
 	pset->mina = get_min(1, pset);
 	pset->maxa = get_max(1, pset);
-}
-
-static void	short_cut(int is_pila, t_pset *pset)
-{
-	t_link	*pile;
-	char	*ope;
-
-	pile = is_pila ? pset->pila : pset->pilb;
-	if (pile->data == get_min2(is_pila, pset) &&
-		pile->next->data == get_min(is_pila, pset))
-	{
-		ope = is_pila ? SA : SB;
-		add_one_ope(ope, pset);
-	}
 }
 
 static int	if_error(t_pset *pset, char *str)

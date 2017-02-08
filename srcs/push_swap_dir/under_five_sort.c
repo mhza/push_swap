@@ -6,11 +6,25 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:47:43 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 17:42:10 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 18:11:35 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	short_cut(int is_pila, t_pset *pset)
+{
+	t_link	*pile;
+	char	*ope;
+
+	pile = is_pila ? pset->pila : pset->pilb;
+	if (pile->data == get_min2(is_pila, pset) && pile->next &&
+		pile->next->data == get_min(is_pila, pset))
+	{
+		ope = is_pila ? SA : SB;
+		add_one_ope(ope, pset);
+	}
+}
 
 void	five_left_sort(int is_pila, t_pset *pset)
 {
@@ -53,7 +67,10 @@ void	under_five(int is_pila, t_pset *pset)
 	ope = is_pila ? SA : SB;
 	pile = is_pila ? pset->pila : pset->pilb;
 	if (countlk(pile) == 1)
-		;
+		return ;
+	short_cut(is_pila, pset);
+	if (index_first_inversion(is_pila, pset) == -1)
+		return ;
 	else if (countlk(pile) == 2 && ((is_pila && pile->data > pile->next->data)
 	|| (!is_pila && pile->data < pile->next->data)))
 		add_one_ope(ope, pset);
