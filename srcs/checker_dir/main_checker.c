@@ -6,12 +6,12 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 15:24:17 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 16:37:18 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-# include "../shared/shared.h"
+#include "../shared/shared.h"
 
 void	free_link_ch(t_link **pile)
 {

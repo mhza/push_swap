@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 14:42:00 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 16:28:25 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ int			main(int ac, char **av)
 		under_five(1, &pset);
 		split_pack(0, &pset);
 	}
-	// printf("len operations avant opti %i\n", (int)ft_strlen(pset.opes));
-	// ft_optimize_ops(pset.opes);
-	// printf("len operations apres opti %i\n", (int)ft_strlen(pset.opes));
 	ft_putstr(pset.opes);
-
 	free_link(&(pset.pila));
 	free_link(&(pset.pilb));
 	free(pset.opes);
