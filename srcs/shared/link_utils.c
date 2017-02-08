@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:41:08 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 13:48:16 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 20:07:31 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	lkadd(t_link **alk, t_link *new)
 
 void	to_firstlk(t_link **alk)
 {
-	while ((*alk) && (*alk)->prev)
+	while (alk && (*alk) && (*alk)->prev)
 		(*alk) = (*alk)->prev;
 }
 

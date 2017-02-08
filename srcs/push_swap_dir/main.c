@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 18:10:24 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 20:15:13 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ static void	set_pset(t_pset *pset)
 	pset->maxa = get_max(1, pset);
 }
 
-static int	if_error(t_pset *pset, char *str)
+static int	if_error(t_pset *pset, char *str, int is_empty)
 {
 	write(2, str, ft_strlen(str));
-	to_firstlk(&(pset->pila));
-	free_link(&(pset->pila));
+	if (is_empty != -1 && pset->pila)
+	{
+		to_firstlk(&(pset->pila));
+		free_link(&(pset->pila));
+	}
 	return (0);
 }
 
@@ -47,16 +50,16 @@ int			main(int ac, char **av)
 {
 	t_pset	pset;
 	int		siza;
+	int		ret;
 
 	if (ac == 1 || !av[1] || (av[1] && !ft_strcmp(av[1], "")))
 		return (0);
 	if ((pset.opes = ft_strnew(sizeof(char))) == NULL)
 		return (0);
-	if (!init_pile(&(pset.pila), ac, av, 0))
-		return (if_error(&pset, ERROR));
+	if ((ret = init_pile(&(pset.pila), ac, av, 0)) < 1)
+		return (if_error(&pset, ERROR, ret));
 	siza = countlk(pset.pila);
 	set_pset(&pset);
-	short_cut(1, &pset);
 	if (siza > 1 && siza < 6 && index_first_inversion(1, &pset) != -1)
 		under_five(1, &pset);
 	else if (siza > 1 && index_first_inversion(1, &pset) != -1)

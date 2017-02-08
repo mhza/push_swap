@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 13:48:28 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 20:09:34 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			init_pile(t_link **pile, int ac, char **av, int option)
 
 	i = 1 + option;
 	if ((av[i] = set_pile_init(av[i], pile)) == NULL)
-		return (0);
+		return (-1);
 	while (i < ac && av[i])
 	{
 		to_lastlk(pile);

@@ -6,14 +6,14 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/08 16:23:52 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/08 19:07:55 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PS	=	push_swap
 CHECKER	=	checker
 CC		=   gcc
-CFLAGS	= 	-Wall -Wextra -Werror
+CFLAGS	= 	-Wall -Wextra -Werror #-fsanitize=address
 RM		=   rm -f
 MKDIR	= mkdir -p
 CHECKER_DIR	= checker_dir/
