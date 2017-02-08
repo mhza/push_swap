@@ -6,11 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 15:28:40 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 13:48:28 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "shared.h"
 
 int			is_twice(t_link *pile, int data)
 {

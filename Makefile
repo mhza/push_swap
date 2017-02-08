@@ -6,35 +6,80 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/01 19:09:41 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/08 15:19:46 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	push_swap
+PS	=	push_swap
+CHECKER	=	checker
 CC		=   gcc
-CFLAGS	= 	-Wall -Wextra -Werror -I. -g
+CFLAGS	= 	-Wall -Wextra -Werror
 RM		=   rm -f
-SRCS	=	push_swap_dir/main.c \
-			push_swap_dir/set_link.c \
-			push_swap_dir/link_utils.c \
-			push_swap_dir/link_utils2.c \
-			push_swap_dir/stdout_utils.c \
+MKDIR	= mkdir -p
+CHECKER_DIR	= checker_dir/
+PUSH_SWAP_DIR	= push_swap_dir/
+LIBFT	= -Llibft -lft
+LIBFT_PATH	= ./libft
+INC_DIR= includes/
+PS_SRC	=	main.c \
+			chainedlk_utils.c \
+			ope_getstr.c \
+			get_inversions.c \
+			quick.c \
+			quick_utils.c \
+			quick_pack.c \
+			quick_pack_utils.c \
+			under_five_sort.c \
+			three_left_sort.c \
+			three_left_nsort.c
+CHECKER_SRC	=	main_checker.c \
+			checker.c \
+			stdout_utils.c
+SHARED_SRC	=	set_link.c \
+			link_utils.c \
+			ope_utils.c \
 
-OBJS	=   $(SRCS:.c=.o)
+SHARED_OBJ= $(SHARED_SRC:.c=.o)
+PS_OBJ	=	$(PS_SRC:.c=.o)
+CHECKER_OBJ	=	$(CHECKER_SRC:.c=.o)
+VPATH	=	srcs/checker_dir/:srcs/push_swap_dir/:srcs/shared/
 
-LIBFT_PATH	= libft
+########################
+#    Makefile rules    #
+########################
 
-all:	$(NAME)
+all: libft $(CHECKER) $(PS)
+libft:
+	@make -C libft
 
-$(NAME):$(OBJS)
-	@$(CC) $(CFLAG) $(SRCS) -L./libft -lft -o $(NAME)
+# Executables
+$(CHECKER): $(CHECKER_OBJ) $(SHARED_OBJ)
+	@$(CC) -o $@ $(CFLAGS) $^ -I $(INC_DIR) $(LIBFT)
+	@echo "Compiling [$@]"
+$(PS): $(PS_OBJ) $(SHARED_OBJ)
+	@$(CC) -o $@ $(CFLAGS) $^ -I $(INC_DIR) $(LIBFT)
+	@echo "Compiling [$@]"
 
+
+# Object files
+$(CHECKER_OBJ): $(CHECKER_SRC)
+	@$(CC) -c $^ $(CFALGS) -I $(INC_DIR)
+	@echo "Compiling [$^]"
+$(SHARED_OBJ): $(SHARED_SRC)
+	@$(CC) -c $^ $(CFALGS) -I $(INC_DIR)
+	@echo "Compiling [$^]"
+$(PS_OBJ): $(PS_SRC)
+	@$(CC) -c $^ $(CFALGS) -I $(INC_DIR)
+	@echo "Compiling [$^]"
+
+
+# Cleaning rules
 clean:
-	@rm -f $(OBJS)
-
-fclean:	clean
-	@rm -f $(NAME)
-
-re:		fclean all
-
-.PHONY:		all clean fclean re
+	@rm -f $(PS_OBJ) $(SHARED_OBJ) $(CHECKER_OBJ)
+	@echo "Cleaning [$(PS_OBJ) $(SHARED_OBJ) $(CHECKER_OBJ)]"
+fclean: clean
+	@rm -rf $(CHECKER) $(PS)
+	@make fclean -C libft
+	@echo "Cleaning [libft checker push_swap]"
+re: fclean all
+.PHONY: clean fclean re libft

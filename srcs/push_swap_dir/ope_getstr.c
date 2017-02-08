@@ -6,11 +6,31 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 20:59:40 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/07 15:41:15 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 15:48:38 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ope_route(t_pset *pset, char *cmd)
+{
+	if ((!ft_strcmp(cmd, SA) || !ft_strcmp(cmd, SS)))
+		swap(&(pset->pila));
+	if ((!ft_strcmp(cmd, SB) || !ft_strcmp(cmd, SS)))
+		swap(&(pset->pilb));
+	if (!ft_strcmp(cmd, PB))
+		push(&(pset->pila), &(pset->pilb));
+	if (!ft_strcmp(cmd, PA))
+		push(&(pset->pilb), &(pset->pila));
+	if ((!ft_strcmp(cmd, RA) || !ft_strcmp(cmd, RR)))
+		rotate(&(pset->pila));
+	if ((!ft_strcmp(cmd, RB) || !ft_strcmp(cmd, RR)))
+		rotate(&(pset->pilb));
+	if ((!ft_strcmp(cmd, RRA) || !ft_strcmp(cmd, RRR)))
+		rrotate(&(pset->pila));
+	if ((!ft_strcmp(cmd, RRB) || !ft_strcmp(cmd, RRR)))
+		rrotate(&(pset->pilb));
+}
 
 char	*ft_strreal(char *s1, char *s2)
 {

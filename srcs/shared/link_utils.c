@@ -6,11 +6,11 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:41:08 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/01 19:13:42 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 13:48:16 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "shared.h"
 
 t_link	*lknew(int data)
 {

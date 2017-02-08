@@ -6,12 +6,11 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/18 16:29:51 by mhaziza           #+#    #+#              #
-#    Updated: 2017/01/28 19:52:25 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/08 15:44:26 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
-CC		=   @gcc
 CFLAGS	= 	-Wall -Wextra -Werror -I.
 RM		=   @rm -f
 SRCS	=   get_next_line.c \
