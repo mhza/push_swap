@@ -6,13 +6,14 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/18 16:29:51 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/08 15:44:26 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/08 16:59:50 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 CFLAGS	= 	-Wall -Wextra -Werror -I.
 RM		=   @rm -f
+CC		=   @gcc
 SRCS	=   get_next_line.c \
 			ft_memset.c \
 			ft_bzero.c \

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:12:38 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 16:28:25 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/08 17:19:01 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ static void	set_pset(t_pset *pset)
 	pset->maxa = get_max(1, pset);
 }
 
+static int	if_error(t_pset *pset, char *str)
+{
+	write(2, str, ft_strlen(str));
+	to_firstlk(&(pset->pila));
+	free_link(&(pset->pila));
+	return (0);
+}
+
 int			main(int ac, char **av)
 {
 	t_pset	pset;
@@ -45,7 +53,7 @@ int			main(int ac, char **av)
 	if ((pset.opes = ft_strnew(sizeof(char))) == NULL)
 		return (0);
 	if (!init_pile(&(pset.pila), ac, av, 0))
-		return (0);
+		return (if_error(&pset, ERROR));
 	siza = countlk(pset.pila);
 	set_pset(&pset);
 	if (siza < 6)
