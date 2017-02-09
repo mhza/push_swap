@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:47:21 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 16:37:18 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/09 14:41:09 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int		main(int ac, char **av)
 		option_print = 1;
 	if (!ft_strcmp(av[1], OPTP))
 		option_pprint = 1;
-	if (!init_pile(&pile, ac, av, option_print))
-		return (ret_main_ch(&pile, &pile_b, ERROR, option_print));
+	if (init_pile(&pile, ac, av, option_print) < 1)
+		return (ret_main_ch_error(&pile, &pile_b, ERROR, option_print));
 	count = countlk(pile);
 	if (ope_read(&pile, &pile_b, option_pprint) == READ_ERROR)
 		return (ret_main_ch_error(&pile, &pile_b, ERROR, option_print));

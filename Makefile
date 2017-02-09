@@ -6,14 +6,14 @@
 #    By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 17:18:53 by mhaziza           #+#    #+#              #
-#    Updated: 2017/02/08 19:07:55 by mhaziza          ###   ########.fr        #
+#    Updated: 2017/02/09 11:48:01 by mhaziza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PS	=	push_swap
 CHECKER	=	checker
 CC		=   gcc
-CFLAGS	= 	-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS	= 	-Wall -Wextra -Werror
 RM		=   rm -f
 MKDIR	= mkdir -p
 CHECKER_DIR	= checker_dir/
@@ -31,7 +31,8 @@ PS_SRC	=	main.c \
 			quick_pack_utils.c \
 			under_five_sort.c \
 			three_left_sort.c \
-			three_left_nsort.c
+			three_left_nsort.c \
+			only_three.c
 CHECKER_SRC	=	main_checker.c \
 			checker.c \
 			stdout_utils.c

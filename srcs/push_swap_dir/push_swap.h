@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:35:06 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 18:05:42 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:51:47 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void			three_left_sort(int is_pila, t_pset *pset, int nsort);
 void			three_left_nsort(int is_pila, t_pset *pset);
 void			under_five(int is_pila, t_pset *pset);
 void			short_cut(int is_pila, t_pset *pset);
+void			only_three(int is_pila, t_pset *pset);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 15:22:53 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 16:34:18 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/09 14:38:17 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int		ope_read(t_link **pile_a, t_link **pile_b, int option)
 	char	*ln;
 	int		read;
 
-	read = get_next_line(0, &ln);
-	while (read && read != READ_ERROR)
+	while ((read = get_next_line(0, &ln)) && read != READ_ERROR)
 	{
 		if (ln && ft_strcmp(ln, SAL) * ft_strcmp(ln, SBL) * ft_strcmp(ln, SSL)
 			* ft_strcmp(ln, PAL) * ft_strcmp(ln, PBL) * ft_strcmp(ln, RRAL)
@@ -48,15 +47,13 @@ int		ope_read(t_link **pile_a, t_link **pile_b, int option)
 			ch_ope_route(pile_a, pile_b, ln);
 			if (option)
 				print_both(pile_a, pile_b);
+			free(ln);
 		}
-		else if (ft_strcmp(ln, "") || get_next_line(0, &ln))
+		else
 		{
 			free(ln);
 			return (-1);
 		}
-		if (ln)
-			free(ln);
-		read = get_next_line(0, &ln);
 	}
 	return (READ_END);
 }

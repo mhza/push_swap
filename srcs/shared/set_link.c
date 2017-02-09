@@ -6,7 +6,7 @@
 /*   By: mhaziza <mhaziza@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 18:52:34 by mhaziza           #+#    #+#             */
-/*   Updated: 2017/02/08 20:09:34 by mhaziza          ###   ########.fr       */
+/*   Updated: 2017/02/09 15:04:52 by mhaziza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,17 @@ static int	set_pile(t_link **pile, char *str)
 int			init_pile(t_link **pile, int ac, char **av, int option)
 {
 	int		i;
+	int		j;
+	int		is_valid;
 
 	i = 1 + option;
+	is_valid = 0;
+	j = -1;
+	while (av[i][++j])
+		if (ft_isdigit(av[i][j]))
+			is_valid = 1;
+	if (!is_valid)
+		return (-1);
 	if ((av[i] = set_pile_init(av[i], pile)) == NULL)
 		return (-1);
 	while (i < ac && av[i])
